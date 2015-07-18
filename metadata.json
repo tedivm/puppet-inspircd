@@ -1,0 +1,14 @@
+{
+  "name": "tedivm/inspircd",
+  "version": "0.1.0",
+  "author": "tedivm",
+  "summary": null,
+  "license": "MIT",
+  "source": "https://github.com/tedivm/puppet-inspircd",
+  "project_page": "https://github.com/tedivm/puppet-inspircd",
+  "issues_url": "https://github.com/tedivm/puppet-inspircd/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+

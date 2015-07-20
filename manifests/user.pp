@@ -1,5 +1,5 @@
 class inspircd::user (
-  $user = inspircd::params::user
+  $user = $inspircd::params::user
 ) inherits inspircd::params {
 
   group { $user:

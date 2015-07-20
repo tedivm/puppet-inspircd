@@ -1,6 +1,6 @@
 class inspircd::packages (
   $extra_modules = [],
-  $packages = inspircd::params::packages
+  $packages = $inspircd::params::packages
 ) inherits inspircd::params {
 
   ensure_packages($packages)

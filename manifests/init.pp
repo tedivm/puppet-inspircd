@@ -63,6 +63,18 @@ class inspircd (
     user => $user,
   }->
   class { 'inspircd::install':
+    version       => $version,
+    extra_modules => $extra_modules,
+    epoll         => $epoll,
+    kqueue        => $kqueue,
+    prefix        => $prefix,
+    binary_dir    => $binary_dir,
+    module_dir    => $module_dir,
+    config_dir    => $config_dir,
+    data_dir      => $data_dir,
+    log_dir       => $log_dir,
+    download_dir  => $download_dir,
+  }->
 
   }->
   class { 'inspircd::service':

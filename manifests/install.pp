@@ -1,16 +1,16 @@
 class inspircd::install (
-  $version = inspircd::params::version,
+  $version = $inspircd::params::version,
   $extra_modules = [],
-  $epoll = inspircd::params::epoll,
-  $kqueue = inspircd::params::kqueue,
-  $prefix = inspircd::params::prefix,
-  $binary_dir = inspircd::params::binary_dir,
-  $module_dir = inspircd::params::module_dir,
-  $config_dir = inspircd::params::config_dir,
-  $data_dir = inspircd::params::data_dir,
-  $log_dir = inspircd::params::log_dir,
-  $download_dir = inspircd::params::download_dir,
-) inherits inspircd::params {
+  $epoll = $inspircd::params::epoll,
+  $kqueue = $inspircd::params::kqueue,
+  $prefix = $inspircd::params::prefix,
+  $binary_dir = $inspircd::params::binary_dir,
+  $module_dir = $inspircd::params::module_dir,
+  $config_dir = $inspircd::params::config_dir,
+  $data_dir = $inspircd::params::data_dir,
+  $log_dir = $inspircd::params::log_dir,
+  $download_dir = $inspircd::params::download_dir,
+) inherits $inspircd::params {
 
   $download = "https://github.com/inspircd/inspircd/archive/v${version}.tar.gz"
   $install_dir = "${download_dir}/inspircd-${version}"

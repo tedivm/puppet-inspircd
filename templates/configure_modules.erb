@@ -1,0 +1,24 @@
+./configure \
+<% @extra_modules.each do |value| -%>
+  --enable-extras=m_<%= value %>.cpp \
+<% end -%>
+<% if @gnutls %>
+  --enable-gnutls \
+<% end %>
+<% if @openssl %>
+  --enable-openssl \
+<% end %>
+<% if @epoll %>
+  --enable-epoll \
+<% end %>
+<% if @kqueue %>
+  --enable-kqueue \
+<% end %>
+  --prefix=<%= prefix %> \
+  --binary-dir=<%= binary_dir %> \
+  --module-dir=<%= module_dir %> \
+  --config-dir=<%= config_dir %> \
+  --data-dir=<%= data_dir %> \
+  --log-dir=<%= log_dir %> \
+  --uid=<%= user %> \
+  --disable-interactive

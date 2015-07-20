@@ -23,7 +23,7 @@
 #
 # === Examples
 #
-#  class { 'inspircd':
+#  class { 'unrealirc':
 #    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
 #  }
 #
@@ -35,7 +35,42 @@
 #
 # Copyright 2015 Your name here, unless otherwise noted.
 #
-class inspircd {
+class inspircd (
+  $version = inspircd::params::version,
+  $user = $inspircd::params::user,
 
+  $extra_modules = [],
+
+  $epoll = $inspircd::params::epoll,
+  $kqueue = $inspircd::params::kqueue,
+
+  $prefix = $inspircd::params::prefix,
+  $binary_dir = $inspircd::params::binary_dir,
+  $module_dir = $inspircd::params::module_dir,
+  $config_dir = $inspircd::params::config_dir,
+  $data_dir = $inspircd::params::data_dir,
+  $log_dir = $inspircd::params::log_dir,
+
+  $service_ensure = $inspircd::params::service_ensure,
+  $download_dir = $inspircd::params::download_dir,
+
+) inherits inspircd::params {
+
+  class { 'inspircd::packages':
+    extra_modules => $extra_modules,
+  }->
+  class { 'inspircd::user':
+    user => $user,
+  }->
+  class { 'inspircd::install':
+
+  }->
+  class { 'inspircd::service':
+    $prefix = $prefix,
+    $service_ensure = $service_ensure,
+  }->
+  class { 'inspircd::cron':
+    binary_dir => $binary_dir,
+  }
 
 }

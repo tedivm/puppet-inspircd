@@ -13,71 +13,10 @@
        email="MI5@the.best.secret.agent">
 
 
-<bind
-      address=""
-      port="6697"
-      type="clients"
-      ssl="gnutls"
->
-
-<bind address="" port="6660-6669" type="clients">
-<bind address="" port="7000,7001" type="servers">
-<bind address="1.2.3.4" port="7005" type="servers" ssl="openssl">
-
 <power
        #hash="sha256"
        diepass=""
        restartpass="">
-
-<connect deny="192.0.2.*">
-
-<connect deny="3ffe::0/32" reason="The 6bone address space is deprecated">
-
-<connect
-         name="secret"
-         parent="main"
-         allow="203.0.113.*"
-         hash="sha256"
-         password="secret"
-
-         maxchans="30"
-         timeout="10"
-         localmax="3"
-         globalmax="3"
-         maxconnwarn="off"
-         #usednsbl="yes"
-         useident="no"
-         limit="5000"
-         modes="+x"
-
-         # requireident, requiressl, requireaccount: require that users of this
-         requiressl="on"
-         # specified using <files secretmotd="filename"> or <execfiles ...>
-         motd="secretmotd"
-         allowmotdcolors="false"
-
-         # port: What port this user is allowed to connect on. (optional)
-         # The port MUST be set to listen in the bind blocks above.
-         port="6697">
-
-<connect
-         name="main"
-         allow="*"
-         #maxchans="30"
-         timeout="10"
-         pingfreq="120"
-         hardsendq="1M"
-         softsendq="8192"
-         recvq="8K"
-         threshold="10"
-         commandrate="1000"
-         fakelag="on"
-         localmax="3"
-         globalmax="3"
-         useident="no"
-         limit="5000"
-         modes="+x">
-
 
 <cidr
       ipv4clone="32"
@@ -102,7 +41,6 @@
 
 
 
-
 <channels
           users="20"
           opers="60">
@@ -119,8 +57,6 @@
 #<dns server="::1" timeout="5">
 
 #<pid file="/path/to/inspircd.pid">
-<banlist chan="#largechan" limit="128">
-<banlist chan="*" limit="69">
 #<disabled commands="TOPIC MODE" usermodes="" chanmodes="" fakenonexistant="yes">
 
 <options
@@ -200,41 +136,8 @@
         maxgroups="100000"
         maxkeep="3d">
 
-
-<badip
-       ipmask="192.0.2.69"
-       reason="No porn here thanks.">
-
-<badnick
-         nick="ChanServ"
-         reason="Reserved For Services">
-
-<badnick nick="NickServ" reason="Reserved For Services">
-<badnick nick="OperServ" reason="Reserved For Services">
-<badnick nick="MemoServ" reason="Reserved For Services">
-
-<badhost
-         host="*@banneduser.example.net"
-         reason="Evading Bans">
-
-<badhost host="root@*" reason="Don't IRC as root!">
-<badhost host="*@198.51.100.0/24" reason="This subnet is bad.">
-
-
-<exception
-           host="*@ircop.example.com"
-           reason="Oper's hostname">
-                                                                #
-
-
 <insane
         hostmasks="no"
         ipmasks="no"
         nickmasks="no"
         trigger="95.5">
-
-
-
-<include file="conf/examples/modules.conf.example">
-#<include file="conf/examples/modules/unrealircd.conf.example">
-#<include file="conf/examples/modules/charybdis.conf.example">

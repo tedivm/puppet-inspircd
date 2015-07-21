@@ -5,7 +5,7 @@ class inspircd::service (
 
   $binary = "${prefix}/inspircd"
 
-  service { 'inspircd'
+  service { 'inspircd':
     ensure     => 'running',
     binary     => $service_ensure,
     start      => "${binary} start",

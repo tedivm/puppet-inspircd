@@ -10,7 +10,7 @@ class inspircd::install (
   $data_dir = $inspircd::params::data_dir,
   $log_dir = $inspircd::params::log_dir,
   $download_dir = $inspircd::params::download_dir,
-) inherits $inspircd::params {
+) inherits inspircd::params {
 
   $download = "https://github.com/inspircd/inspircd/archive/v${version}.tar.gz"
   $install_dir = "${download_dir}/inspircd-${version}"

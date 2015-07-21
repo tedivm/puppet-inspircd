@@ -75,6 +75,7 @@ class inspircd (
     log_dir       => $log_dir,
     download_dir  => $download_dir,
   }->
+  class { 'inspircd::config':
 
   }->
   class { 'inspircd::service':

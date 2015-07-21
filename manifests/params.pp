@@ -36,6 +36,15 @@ class inspircd::params {
     'libgeoip-dev',
   ]
 
+
+  $services_users = [
+    'chanserv',
+    'nickserv',
+    'memoserv',
+    'operserv'
+  ]
+
+
   $user = 'inspircd'
   $service_ensure = 'running'
 

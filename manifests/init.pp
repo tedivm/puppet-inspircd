@@ -78,11 +78,11 @@ class inspircd (
 
   }->
   class { 'inspircd::service':
-    $prefix = $prefix,
-    $service_ensure = $service_ensure,
+    prefix         => $prefix,
+    service_ensure => $service_ensure,
   }->
   class { 'inspircd::cron':
-    binary_dir => $binary_dir,
+    prefix => $prefix,
   }
 
 }

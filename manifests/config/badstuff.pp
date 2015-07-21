@@ -7,6 +7,8 @@ define inspircd::config::badstuff (
   $config_dir = $inspircd::config_dir,
 ) {
 
+  assert_private('This type is private.')
+
   if $keyname {
     $keyname_norm = $keyname
   } else {

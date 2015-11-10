@@ -1,6 +1,6 @@
 class inspircd::params {
 
-  $version = '3.2.10.4'
+  $version = '2.0.20'
 
   $packages = [
     'build-essential',
@@ -60,7 +60,14 @@ class inspircd::params {
       $module_dir = "${prefix}/module"
       $config_dir = "${prefix}/config"
       $data_dir = "${prefix}/data"
-      $log_dir = "${prefix}/log"
+      $log_dir = "${prefix}/logs"
+
+
+      $path_wget = '/usr/bin/wget'
+      $path_tar = '/bin/tar'
+      $path_make = '/usr/bin/make'
+
+
     }
   }
 

@@ -15,41 +15,41 @@ class inspircd::install (
   $download = "https://github.com/inspircd/inspircd/archive/v${version}.tar.gz"
   $install_dir = "${download_dir}/inspircd-${version}"
 
-  $gnutls = member($extras, 'ssl_gnutls')
-  $openssl = member($extras, 'ssl_openssl')
+  $gnutls = member($extra_modules, 'ssl_gnutls')
+  $openssl = member($extra_modules, 'ssl_openssl')
 
   file { $download_dir:
     ensure => 'directory',
   }~>
 
   exec { "inspircd wget":
-    command => "wget ${download} -P ${download_dir}",
+    command => "${path_wget} ${download} -P ${download_dir}",
     creates => "${download_dir}/v${version}.tar.gz",
   }->
 
   exec { "inspircd untar":
-    command => "tar -zxvf ${download_dir}/v${version}.tar.gz -c ${download_dir}",
+    command => "${path_tar} -zxvf ${download_dir}/v${version}.tar.gz -C ${download_dir}",
     creates => $install_dir,
   }->
 
-  file { "${install_dir}/configure.sh":
+  file { "${install_dir}/configure_wrapper.sh":
     content => template('inspircd/configure_modules.erb'),
     mode => '0744',
   }~>
 
   exec { "inspircd configure":
-    command => "${install_dir}/configure.sh",
+    command => "${install_dir}/configure_wrapper.sh",
     cwd => $install_dir,
   }~>
 
   exec { 'inspircd make':
-    command => 'make',
+    command => "${path_make}",
     cwd => $install_dir,
     refreshonly => true,
   }~>
 
   exec { 'inspircd make install':
-    command => 'make install',
+    command => "${path_make} install",
     cwd => $install_dir,
     refreshonly => true,
   }

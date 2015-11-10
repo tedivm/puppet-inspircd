@@ -36,7 +36,7 @@
 # Copyright 2015 Your name here, unless otherwise noted.
 #
 class inspircd (
-  $version = inspircd::params::version,
+  $version = $inspircd::params::version,
   $user = $inspircd::params::user,
 
   $extra_modules = [],

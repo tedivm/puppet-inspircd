@@ -2,7 +2,7 @@ define inspircd::config::badstuff (
   $type,
   $content,
   $reason,
-  $keyname,
+  $keyname = false,
   $order = 25,
   $config_dir = $inspircd::config_dir,
 ) {
@@ -12,7 +12,7 @@ define inspircd::config::badstuff (
   if $keyname {
     $keyname_norm = $keyname
   } else {
-    $keyname_norm = $keyname
+    $keyname_norm = $type
   }
 
   concat::fragment { "${config_dir}/inspircd.conf bad${type} ${content}":

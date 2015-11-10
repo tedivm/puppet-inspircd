@@ -4,14 +4,16 @@ class inspircd::cron (
 
   cron { "inspircd start on boot":
     ensure  => present,
-    command => "cd ${prefix}; ./inspircd start  > /dev/null 2>&1",
+    command => "${prefix}/inspircd start  > /dev/null 2>&1",
+    user    => $user,
     special => 'reboot'
   }
 
   cron { "inspircd ensure running":
     ensure  => present,
-    command => "cd ${prefix}; ./inspircd cron  > /dev/null 2>&1",
-    minute => '*/2'
+    command => "${prefix}/inspircd cron  > /dev/null 2>&1",
+    user    => $user,
+    minute  => '*/2'
   }
 
 }

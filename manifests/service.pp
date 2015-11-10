@@ -3,17 +3,19 @@ class inspircd::service (
   $service_ensure = $inspircd::params::service_ensure,
 ) inherits inspircd::params {
 
+
+  $su = "su ${user} -c"
   $binary = "${prefix}/inspircd"
 
   service { 'inspircd':
-    ensure     => 'running',
-    binary     => $service_ensure,
-    start      => "${binary} start",
-    stop       => "${binary} stop",
-    restart    => "${binary} restart",
-    status     => "${binary} status | grep -q 'InspIRCd is running'",
+    provider   => 'base',
+    ensure     => $service_ensure,
+    start      => "$su \"${binary} start && ${binary} status | grep -q 'InspIRCd is running'\"",
+    stop       => "$su \"${binary} stop\"",
     hasrestart => false,
+    restart    => "$su \"${binary} restart\"",
     hasstatus  => false,
+    status     => "$su \"${binary} status | grep -q 'InspIRCd is running'\"",
   }
 
 }

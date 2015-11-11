@@ -1,5 +1,5 @@
 class inspircd::service (
-  $prefix = $inspircd::params::binary_dir,
+  $prefix = $inspircd::params::prefix,
   $service_ensure = $inspircd::params::service_ensure,
 ) inherits inspircd::params {
 

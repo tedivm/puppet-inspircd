@@ -43,7 +43,8 @@ class inspircd (
 
   $epoll = $inspircd::params::epoll,
   $kqueue = $inspircd::params::kqueue,
-
+  $user = $inspircd::params::user,
+  $base_dir = $inspircd::params::base_dir,
   $prefix = $inspircd::params::prefix,
   $binary_dir = $inspircd::params::binary_dir,
   $module_dir = $inspircd::params::module_dir,
@@ -59,15 +60,18 @@ class inspircd (
   class { 'inspircd::packages':
     extra_modules => $extra_modules,
   }->
+
   class { 'inspircd::user':
     user => $user,
   }->
+
   class { 'inspircd::install':
     version       => $version,
     extra_modules => $extra_modules,
     epoll         => $epoll,
     kqueue        => $kqueue,
-    prefix        => $prefix,
+    user          => $user,
+    base_dir      => $base_dir,
     binary_dir    => $binary_dir,
     module_dir    => $module_dir,
     config_dir    => $config_dir,
@@ -75,15 +79,18 @@ class inspircd (
     log_dir       => $log_dir,
     download_dir  => $download_dir,
   }->
+
   class { 'inspircd::config':
 
   }->
+
+  class { 'inspircd::cron':
+    prefix => $prefix,
+  }->
+
   class { 'inspircd::service':
     prefix         => $prefix,
     service_ensure => $service_ensure,
-  }->
-  class { 'inspircd::cron':
-    prefix => $prefix,
   }
 
 }

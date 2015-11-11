@@ -36,7 +36,6 @@ class inspircd::params {
     'libgeoip-dev',
   ]
 
-
   $services_users = [
     'chanserv',
     'nickserv',
@@ -44,29 +43,28 @@ class inspircd::params {
     'operserv'
   ]
 
-
   $user = 'inspircd'
   $service_ensure = 'running'
 
   case $::osfamily {
     default: {
-      $download_dir = '/opt/inspircd_install'
-
       $epoll = true
       $kqueue = false
 
-      $prefix = "/opt/inspircd/${version}"
+      $base_dir = "/opt/inspircd"
+
+      $download_dir = "${base_dir}/downloads"
+      $config_dir = "${base_dir}/config"
+      $data_dir = "${base_dir}/data"
+      $log_dir = "${base_dir}/logs"
+
+      $prefix = "${base_dir}/$version"
       $binary_dir = "${prefix}/bin"
       $module_dir = "${prefix}/module"
-      $config_dir = "${prefix}/config"
-      $data_dir = "${prefix}/data"
-      $log_dir = "${prefix}/logs"
-
 
       $path_wget = '/usr/bin/wget'
       $path_tar = '/bin/tar'
       $path_make = '/usr/bin/make'
-
 
     }
   }

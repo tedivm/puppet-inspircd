@@ -3,7 +3,8 @@ class inspircd::install (
   $extra_modules = [],
   $epoll = $inspircd::params::epoll,
   $kqueue = $inspircd::params::kqueue,
-  $prefix = $inspircd::params::prefix,
+  $user = $inspircd::params::user,
+  $base_dir = $inspircd::params::base_dir,
   $binary_dir = $inspircd::params::binary_dir,
   $module_dir = $inspircd::params::module_dir,
   $config_dir = $inspircd::params::config_dir,
@@ -18,19 +19,32 @@ class inspircd::install (
   $gnutls = member($extra_modules, 'ssl_gnutls')
   $openssl = member($extra_modules, 'ssl_openssl')
 
+  file { $base_dir:
+    ensure => 'directory',
+  }->
+
+  file { $log_dir:
+    ensure => 'directory',
+  }->
+
+  file { "$log_dir/startup.log":
+    ensure => 'file',
+    owner => $user
+  }->
+
   file { $download_dir:
     ensure => 'directory',
-  }~>
+  }->
 
   exec { "inspircd wget":
     command => "${path_wget} ${download} -P ${download_dir}",
     creates => "${download_dir}/v${version}.tar.gz",
-  }->
+  }~>
 
   exec { "inspircd untar":
     command => "${path_tar} -zxvf ${download_dir}/v${version}.tar.gz -C ${download_dir}",
     creates => $install_dir,
-  }->
+  }~>
 
   file { "${install_dir}/configure_wrapper.sh":
     content => template('inspircd/configure_modules.erb'),
@@ -40,6 +54,7 @@ class inspircd::install (
   exec { "inspircd configure":
     command => "${install_dir}/configure_wrapper.sh",
     cwd => $install_dir,
+    refreshonly => true,
   }~>
 
   exec { 'inspircd make':

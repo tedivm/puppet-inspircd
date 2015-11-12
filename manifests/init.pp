@@ -36,14 +36,24 @@
 # Copyright 2015 Your name here, unless otherwise noted.
 #
 class inspircd (
+
+
+  # ircd Configuration
+  $motd = $inspircd::params::motd,
+  $rules = $inspircd::params::rules,
+
+
+
+  # System Settings
   $version = $inspircd::params::version,
   $user = $inspircd::params::user,
-
   $extra_modules = [],
-
+  $service_ensure = $inspircd::params::service_ensure,
   $epoll = $inspircd::params::epoll,
   $kqueue = $inspircd::params::kqueue,
-  $user = $inspircd::params::user,
+
+
+  # Directories
   $base_dir = $inspircd::params::base_dir,
   $prefix = $inspircd::params::prefix,
   $binary_dir = $inspircd::params::binary_dir,
@@ -51,8 +61,6 @@ class inspircd (
   $config_dir = $inspircd::params::config_dir,
   $data_dir = $inspircd::params::data_dir,
   $log_dir = $inspircd::params::log_dir,
-
-  $service_ensure = $inspircd::params::service_ensure,
   $download_dir = $inspircd::params::download_dir,
 
 ) inherits inspircd::params {
@@ -81,7 +89,10 @@ class inspircd (
   }->
 
   class { 'inspircd::config':
-
+    motd       => $motd,
+    rules      => $rules,
+    user       => $user,
+    config_dir => $config_dir,
   }->
 
   class { 'inspircd::cron':

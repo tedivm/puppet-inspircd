@@ -1,6 +1,6 @@
 define inspircd::config::include (
   $path = false,
-  $content = false,
+  $executable = false,
   $order = 15,
   $config_dir = $inspircd::config_dir,
 ) {

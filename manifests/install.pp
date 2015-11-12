@@ -23,8 +23,14 @@ class inspircd::install (
     ensure => 'directory',
   }->
 
+  file { $data_dir:
+    ensure => 'directory',
+    owner => $user
+  }->
+
   file { $log_dir:
     ensure => 'directory',
+    owner => $user
   }->
 
   file { "$log_dir/startup.log":
@@ -47,7 +53,7 @@ class inspircd::install (
   }~>
 
   file { "${install_dir}/configure_wrapper.sh":
-    content => template('inspircd/configure_modules.erb'),
+    content => template('inspircd/configure_wrapper.erb'),
     mode => '0744',
   }~>
 

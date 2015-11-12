@@ -25,15 +25,12 @@
 
 # This file has all the information about oper classes, types and o:lines.
 # You *MUST* edit it.
-<include file="conf/examples/opers.conf.example">
+<include file="<%= @config_dir %>/opers.conf">
 
 # This file has all the information about server links and ulined servers.
 # You *MUST* edit it if you intend to link servers.
-<include file="conf/examples/links.conf.example">
+<include file="<%= @config_dir %>/links.conf">
 
-
-
-<files motd="conf/examples/motd.txt.example" rules="conf/examples/rules.txt.example">
 
 # Example of an executable file include. Note this will be read on rehash,
 # not when the command is run.
@@ -141,4 +138,3 @@
         ipmasks="no"
         nickmasks="no"
         trigger="95.5">
-        

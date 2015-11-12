@@ -46,6 +46,13 @@ class inspircd::params {
   $user = 'inspircd'
   $service_ensure = 'running'
 
+  $motd = ''
+  $rules = ''
+
+  $bind_ip = ""
+  $bind_port = "6667"
+  $bind_ssl_port = "6697"
+
   case $::osfamily {
     default: {
       $epoll = true

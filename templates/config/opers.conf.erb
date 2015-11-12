@@ -1,0 +1,81 @@
+#-#-#-#-#-#-#-#-#-#-#-#-  CLASS CONFIGURATION   -#-#-#-#-#-#-#-#-#-#-#-
+#                                                                     #
+#   Classes are a group of commands which are grouped together and    #
+#   given a unique name. They're used to define which commands        #
+#   are available to certain types of Operators.                      #
+#                                                                     #
+#                                                                     #
+#  Note: It is possible to make a class which covers all available    #
+#  commands. To do this, specify commands="*". This is not really     #
+#  recommended, as it negates the whole purpose of the class system,  #
+#  however it is provided for fast configuration (e.g. in test nets). #
+#                                                                     #
+
+<class
+     name="Shutdown"
+
+     # commands: Oper-only commands that opers of this class can run.
+     commands="DIE RESTART REHASH LOADMODULE UNLOADMODULE RELOADMODULE GLOADMODULE GUNLOADMODULE GRELOADMODULE"
+
+     # privs: Special privileges that users with this class may utilise.
+     #  VIEWING:
+     #   - channels/auspex: allows opers with this priv to see more detail about channels than normal users.
+     #   - users/auspex: allows opers with this priv to view more details about users than normal users, e.g. real host and IP.
+     #   - servers/auspex: allows opers with this priv to see more detail about server information than normal users.
+     # ACTIONS:
+     #   - users/mass-message: allows opers with this priv to PRIVMSG and NOTICE to a server mask (e.g. NOTICE $*)
+     #   - channels/high-join-limit: allows opers with this priv to join <channels:opers> total channels instead of <channels:users> total channels.
+     # PERMISSIONS:
+     #   - users/flood/no-fakelag: prevents opers from being penalized with fake lag for flooding (*NOTE)
+     #   - users/flood/no-throttle: allows opers with this priv to send commands without being throttled (*NOTE)
+     #   - users/flood/increased-buffers: allows opers with this priv to send and receive data without worrying about being disconnected for exceeding limits (*NOTE)
+     #
+     # *NOTE: These privs are potentially dangerous, as they grant users with them the ability to hammer your server's CPU/RAM as much as they want, essentially.
+     privs="users/auspex channels/auspex servers/auspex users/mass-message channels/high-join-limit users/flood/no-throttle users/flood/increased-buffers"
+
+     # usermodes: Oper-only usermodes that opers with this class can use.
+     usermodes="*"
+
+     # chanmodes: Oper-only channel modes that opers with this class can use.
+     chanmodes="*">
+
+<class name="SACommands" commands="SAJOIN SAPART SANICK SAQUIT SATOPIC SAKICK SAMODE OJOIN">
+<class name="ServerLink" commands="CONNECT SQUIT RCONNECT RSQUIT MKPASSWD ALLTIME SWHOIS JUMPSERVER LOCKSERV UNLOCKSERV" usermodes="*" chanmodes="*" privs="servers/auspex">
+<class name="BanControl" commands="KILL GLINE KLINE ZLINE QLINE ELINE TLINE RLINE CHECK NICKLOCK NICKUNLOCK SHUN CLONES CBAN CLOSE" usermodes="*" chanmodes="*">
+<class name="OperChat" commands="WALLOPS GLOBOPS" usermodes="*" chanmodes="*" privs="users/mass-message">
+<class name="HostCloak" commands="SETHOST SETIDENT SETIDLE CHGNAME CHGHOST CHGIDENT" usermodes="*" chanmodes="*" privs="users/auspex">
+
+
+#-#-#-#-#-#-#-#-#-#-#-#-  OPERATOR COMPOSITION   -#-#-#-#-#-#-#-#-#-#-#
+#                                                                     #
+#   This is where you specify which types of operators you have on    #
+#   your server, as well as the commands they are allowed to use.     #
+#   This works alongside with the classes specified above.            #
+#                                                                     #
+
+<type
+    # name: Name of type. Used in actual server operator accounts below.
+    # Cannot contain spaces. If you would like a space, use
+    # the _ character instead and it will translate to a space on whois.
+    name="NetAdmin"
+
+    # classes: Classes (blocks above) that this type belongs to.
+    classes="SACommands OperChat BanControl HostCloak Shutdown ServerLink"
+
+    # vhost: Host opers of this type get when they log in (oper up). This is optional.
+    vhost="netadmin.omega.example.org"
+
+    # modes: User modes besides +o that are set on an oper of this type
+    # when they oper up. Used for snomasks and other things.
+    # Requires that m_opermodes.so be loaded.
+    modes="+s +cCqQ">
+
+<type name="GlobalOp" classes="SACommands OperChat BanControl HostCloak ServerLink" vhost="ircop.omega.example.org">
+<type name="Helper" classes="HostCloak" vhost="helper.omega.example.org">
+
+
+#-#-#-#-#-#-#-#-#-#-#-  OPERATOR CONFIGURATION   -#-#-#-#-#-#-#-#-#-#-#
+#                                                                     #
+#   Opers are defined here. This is a very important section.         #
+#   Remember to only make operators out of trustworthy people.        #
+#                                                                     #

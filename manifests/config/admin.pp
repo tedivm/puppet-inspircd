@@ -14,7 +14,7 @@ class inspircd::config::admin (
   ::inspircd::internal::configblock { "inspircd admin ":
     config_name => "admin",
     config      => $config,
-    order       => "03"
+    order       => "06"
   }
 
 

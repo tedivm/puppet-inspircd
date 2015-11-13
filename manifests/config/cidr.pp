@@ -11,7 +11,7 @@ class inspircd::config::cidr (
   ::inspircd::internal::configblock { "inspircd $name ":
     config_name => "cidr",
     config      => $config,
-    order       => 10
+    order       => "10"
   }
 
 }

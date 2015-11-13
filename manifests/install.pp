@@ -75,6 +75,11 @@ class inspircd::install (
     command => "${path_make} install",
     cwd => $install_dir,
     refreshonly => true,
+  }->
+
+  exec { "inspircd erase examples directory":
+    command => "${path_rm} -R ${config_dir}/examples",
+    onlyif => "${path_ls} -1 ${config_dir}/examples"
   }
 
 }

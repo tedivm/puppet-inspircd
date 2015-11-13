@@ -15,7 +15,7 @@ class inspircd::config::disabled (
   ::inspircd::internal::configblock { "inspircd $name ":
     config_name => "disabled",
     config      => $config,
-    order       => "12"
+    order       => "17"
   }
 
 

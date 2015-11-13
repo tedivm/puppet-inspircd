@@ -130,19 +130,14 @@ class inspircd::config (
     include => false
   }
 
-  ::inspircd::config::section { 'links':
+  $sections = [
+    'links',
+    'modules',
+    'opers',
+    'connections'
+  ]
 
-  }
-
-  ::inspircd::config::section { 'modules':
-
-  }
-
-  ::inspircd::config::section { 'opers':
-
-  }
-
-
+  ::inspircd::config::section { $sections: }
 
   ## Individual Settings
 
@@ -292,7 +287,6 @@ class inspircd::config (
   }
 
   ::inspircd::config::banlist { 'default':
-    order => 23,
     chan  => "*",
     limit => "70"
   }

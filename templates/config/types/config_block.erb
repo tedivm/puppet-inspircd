@@ -1,7 +1,7 @@
-<<%= @name %>
-  <% @config.each do |option,value| -%>
-    <%- if !value.empty? and value.to_s != 'undef' -%>
+<<%= @config_name %>
+<% @config.each do |option,value| -%>
+  <%- if value.to_s != 'undef' -%>
       <%= option %>="<%= value %>"
-    <%- end -%>
-  <% end -%>
-        >
+  <%- end -%>
+<% end -%>
+>

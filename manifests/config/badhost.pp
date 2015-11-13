@@ -6,7 +6,7 @@ define inspircd::config::badhost (
       type => 'host',
       content => $name,
       reason => $reason,
-      order => 26,
+      order => "26",
   }
 
 }

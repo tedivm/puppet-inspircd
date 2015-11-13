@@ -1,5 +1,5 @@
 define inspircd::config::connect (
-  $order = 10,
+  $order = "20",
   $allow = "*",
   $port = undef,
   $maxchans = undef,
@@ -41,6 +41,7 @@ define inspircd::config::connect (
   ::inspircd::internal::configblock { "inspircd connect $name ":
     config_name => "connect",
     config      => $config,
+    section     => "connections",
     order       => $order
   }
 

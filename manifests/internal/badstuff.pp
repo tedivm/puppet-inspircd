@@ -3,7 +3,7 @@ define inspircd::internal::badstuff (
   $content,
   $reason,
   $keyname = false,
-  $order = 25,
+  $order = "27",
   $config_dir = $inspircd::config_dir,
 ) {
 

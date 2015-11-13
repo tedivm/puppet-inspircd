@@ -11,7 +11,7 @@ define inspircd::config::dns (
   ::inspircd::internal::configblock { "inspircd dns $name ":
     config_name => "dns",
     config      => $config,
-    order       => "03"
+    order       => "14"
   }
 
 }

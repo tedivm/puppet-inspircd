@@ -15,7 +15,7 @@ class inspircd::config::insane (
   ::inspircd::internal::configblock { "inspircd $name ":
     config_name => "insane",
     config      => $config,
-    order       => 10
+    order       => "29"
   }
 
 }

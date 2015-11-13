@@ -39,7 +39,7 @@ class inspircd::config::security (
   ::inspircd::internal::configblock { "inspircd $name ":
     config_name => "security",
     config      => $config,
-    order       => 15
+    order       => "20"
   }
 
 }

@@ -3,7 +3,6 @@ define inspircd::config::bind (
   $port = '',
   $type = 'client',
   $ssl = false,
-  $order = "04",
   $config_dir = $inspircd::config_dir,
 ) {
 
@@ -16,7 +15,7 @@ define inspircd::config::bind (
   concat::fragment { "${config_dir}/inspircd.conf bind ${name}":
     target => "${config_dir}/inspircd.conf",
     content => template('inspircd/config/types/bind.erb'),
-    order   => $order
+    order   => "07"
   }
 
 }

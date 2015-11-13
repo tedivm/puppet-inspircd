@@ -196,6 +196,8 @@ class inspircd::params {
       $path_wget = '/usr/bin/wget'
       $path_tar = '/bin/tar'
       $path_make = '/usr/bin/make'
+      $path_ls = '/bin/ls'
+      $path_rm = '/bin/rm'
 
       $target = "${log_dir}/ircd.log"
 

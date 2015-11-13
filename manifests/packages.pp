@@ -5,7 +5,7 @@ class inspircd::packages (
 
   ensure_packages($packages)
 
-  if(member($modules, 'ldapauth') or member($extra_modules, 'ldapoper')) {
+  if(member($modules, 'ldapauth') or member($modules, 'ldapoper')) {
     ensure_packages($packages_ldap)
   }
 

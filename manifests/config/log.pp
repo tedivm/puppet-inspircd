@@ -15,7 +15,7 @@ class inspircd::config::log (
   ::inspircd::internal::configblock { "inspircd $name ":
     config_name => "log",
     config      => $config,
-    order       => 10
+    order       => "22"
   }
 
 }

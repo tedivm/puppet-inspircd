@@ -19,7 +19,7 @@ class inspircd::config::performance (
   ::inspircd::internal::configblock { "inspircd $name ":
     config_name => "performance",
     config      => $config,
-    order       => 15
+    order       => "19"
   }
 
 }

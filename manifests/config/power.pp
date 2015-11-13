@@ -29,6 +29,6 @@ class inspircd::config::power (
   ::inspircd::internal::configblock { "inspircd $name ":
     config_name => "power",
     config      => $config,
-    order       => 5
+    order       => "08"
   }
 }

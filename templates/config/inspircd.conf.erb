@@ -6,13 +6,6 @@
         description="Waddle World"
         network="Omega">
 
-
-<admin
-       name="Johnny English"
-       nick="MI5"
-       email="MI5@the.best.secret.agent">
-
-
 <power
        #hash="sha256"
        diepass=""
@@ -21,15 +14,6 @@
 <cidr
       ipv4clone="32"
       ipv6clone="128">
-
-
-# This file has all the information about oper classes, types and o:lines.
-# You *MUST* edit it.
-<include file="<%= @config_dir %>/opers.conf">
-
-# This file has all the information about server links and ulined servers.
-# You *MUST* edit it if you intend to link servers.
-<include file="<%= @config_dir %>/links.conf">
 
 
 # Example of an executable file include. Note this will be read on rehash,
@@ -113,28 +97,39 @@
           userstats="Pu">
 
 
-<limits
-        maxnick="31"
-        maxchan="64"
-        maxmodes="20"
-        maxident="11"
-        maxquit="255"
-        maxtopic="307"
-        maxkick="255"
-        maxgecos="128"
-        maxaway="200">
 
+<log method="file" type="* -USERINPUT -USEROUTPUT" level="default" target="<%= @log_dir %>/ircd.log">
 
-
-<log method="file" type="* -USERINPUT -USEROUTPUT" level="default" target="logs/ircd.log">
-
-<whowas
-        groupsize="10"
-        maxgroups="100000"
-        maxkeep="3d">
 
 <insane
         hostmasks="no"
         ipmasks="no"
         nickmasks="no"
         trigger="95.5">
+
+
+<connect
+        name="main"
+        allow="*"
+        #maxchans="30"
+        timeout="10"
+        pingfreq="120"
+        hardsendq="1M"
+        softsendq="8192"
+        recvq="8K"
+        threshold="10"
+        commandrate="1000"
+        fakelag="on"
+        localmax="3"
+        globalmax="3"
+        useident="no"
+        limit="5000"
+        modes="+x">
+
+
+
+
+
+
+
+### Generated Configuration

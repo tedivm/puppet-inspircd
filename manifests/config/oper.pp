@@ -8,12 +8,12 @@ define inspircd::config::oper (
 ) {
 
   if($hash) {
-      $hash_normalized = $hash
+      $hash_normalized = "hash=\"${hash}\""
       $password_normalized = $password
   } else {
     $string_hash = pw_hash($password, 'SHA-256', fqdn_rand_string(8, '', $name))
     $password_normalized = regsubst($string_hash, '^\$5\$', '')
-    $hash_normalized = 'hmac-sha256'
+    $hash_normalized = 'hash="hmac-sha256"'
   }
 
   concat::fragment { "${config_dir}/opers.conf oper ${name}":

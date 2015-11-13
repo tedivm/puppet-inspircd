@@ -1,61 +1,59 @@
 class inspircd::config (
-  $motd = $inspircd::params::motd,
-  $rules = $inspircd::params::rules,
-  $user = $inspircd::params::user,
-  $config_dir = $inspircd::params::config_dir,
 
+  # ADMIN
+  $admin = $inspircd::params::admin,
+  $nick = $inspircd::params::nick,
+  $email = $inspircd::params::email,
+
+  # BIND PORTS
   $bind_ip = $inspircd::params::bind_ip,
   $bind_port = $inspircd::params::bind_port,
 
+  # FILES
+  $motd = $inspircd::params::motd,
+  $rules = $inspircd::params::rules,
+
+  # LIMITS
+  $maxnick = $inspircd::params::maxnick,
+  $maxchan = $inspircd::params::maxchan,
+  $maxmodes = $inspircd::params::maxmodes,
+  $maxident = $inspircd::params::maxident,
+  $maxquit = $inspircd::params::maxquit,
+  $maxtopic = $inspircd::params::maxtopic,
+  $maxkick = $inspircd::params::maxkick,
+  $maxgecos = $inspircd::params::maxgecos,
+  $maxaway = $inspircd::params::maxaway,
+
+  # WHOWAS Configuration
+  $groupsize = $inspircd::params::groupsize,
+  $maxgroups = $inspircd::params::maxgroups,
+  $maxkeep = $inspircd::params::maxkeep,
+
+  # GENERAL
+  $user = $inspircd::params::user,
+  $config_dir = $inspircd::params::config_dir,
+
+
+  $default_modules = $inspircd::params::default_modules,
+
 ) inherits inspircd::params {
 
-
-  # Define and populate base configuration
-
-  concat { "${config_dir}/inspircd.conf":
-    ensure => 'present',
-    warn   => true,
-    force  => true,
-    order  => 'numeric',
+  ::inspircd::config::section { 'inspircd':
+    include => false
   }
 
-  concat::fragment { "inspircd base config":
-    target  => "${config_dir}/inspircd.conf",
-    content => template('inspircd/config/inspircd.conf.erb'),
-    order   => '01'
+  ::inspircd::config::section { 'links':
+
   }
 
+  ::inspircd::config::section { 'modules':
 
-  # Define and populate oper configuration
-
-  concat { "${config_dir}/opers.conf":
-    ensure => 'present',
-    warn   => true,
-    force  => true,
-    order  => 'numeric',
   }
 
-  concat::fragment { "inspircd opers config":
-    target  => "${config_dir}/opers.conf",
-    content => template('inspircd/config/opers.conf.erb'),
-    order   => '01'
+  ::inspircd::config::section { 'opers':
+
   }
 
-
-  # Define and populate links configuration
-
-  concat { "${config_dir}/links.conf":
-    ensure => 'present',
-    warn   => true,
-    force  => true,
-    order  => 'numeric',
-  }
-
-  concat::fragment { "inspircd links config":
-    target  => "${config_dir}/links.conf",
-    content => "\n",
-    order   => '01'
-  }
 
 
   ## Individual Settings
@@ -63,16 +61,43 @@ class inspircd::config (
   ::inspircd::config::bind { "default unencrypted port":
     address => $bind_ip,
     port    => $bind_port,
-    type    => 'client',
+    type    => 'clients',
     ssl     => false,
   }
 
+  ::inspircd::config::module { $default_modules:
+
+  }
 
   class {"inspircd::config::files":
     motd       => $motd,
     rules      => $rules,
     user       => $user,
     config_dir => $config_dir
+  }
+
+  class { 'inspircd::config::limits':
+    maxnick  => $maxnick,
+    maxchan  => $maxchan,
+    maxmodes => $maxmodes,
+    maxident => $maxident,
+    maxquit  => $maxquit,
+    maxtopic => $maxtopic,
+    maxkick  => $maxkick,
+    maxgecos => $maxgecos,
+    maxaway  => $maxaway,
+  }
+
+  class { 'inspircd::config::whowas':
+    groupsize => $groupsize,
+    maxgroups => $maxgroups,
+    maxkeep   => $maxkeep,
+  }
+
+  class { 'inspircd::config::admin':
+    admin => $admin,
+    nick  => $nick,
+    email => $email,
   }
 
   ::inspircd::config::banlist { 'default':

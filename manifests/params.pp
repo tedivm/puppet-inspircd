@@ -43,6 +43,18 @@ class inspircd::params {
     'operserv'
   ]
 
+  $default_modules = [
+    'sha256',
+    'md5',
+    'alias',
+    'password_hash',
+    'opermotd',
+    'spanningtree',
+
+    'banexception',
+
+  ]
+
   $user = 'inspircd'
   $service_ensure = 'running'
 
@@ -52,6 +64,27 @@ class inspircd::params {
   $bind_ip = ""
   $bind_port = "6667"
   $bind_ssl_port = "6697"
+
+
+  $maxnick = "31"
+  $maxchan = "64"
+  $maxmodes = "20"
+  $maxident = "11"
+  $maxquit = "255"
+  $maxtopic = "307"
+  $maxkick = "255"
+  $maxgecos = "128"
+  $maxaway = "200"
+
+
+  $groupsize = "10"
+  $maxgroups = "100000"
+  $maxkeep = "3d"
+
+  $admin = ''
+  $nick = ''
+  $email = ''
+
 
   case $::osfamily {
     default: {

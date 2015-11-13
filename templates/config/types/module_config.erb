@@ -1,4 +1,4 @@
-<<%= @name %>
+<<%= @config_name %>
 <% @config.each do |option,value| -%>
   <%- if value.to_s != 'undef' -%>
       <%= option %>="<%= value %>"

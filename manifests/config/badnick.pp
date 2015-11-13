@@ -2,7 +2,7 @@ define inspircd::config::badnick (
   $reason,
 ) {
 
-  inspircd::config::badstuff { "nick ${name}":
+  inspircd::internal::badstuff { "nick ${name}":
       type => 'nick',
       content => $name,
       reason => $reason,

@@ -38,9 +38,33 @@
 class inspircd (
 
 
-  # ircd Configuration
+  # ADMIN
+  $admin = $inspircd::params::admin,
+  $nick = $inspircd::params::nick,
+  $email = $inspircd::params::email,
+
+
+  # FILES Configuration
   $motd = $inspircd::params::motd,
   $rules = $inspircd::params::rules,
+
+
+  # LIMITS Configuration
+  $maxnick = $inspircd::params::maxnick,
+  $maxchan = $inspircd::params::maxchan,
+  $maxmodes = $inspircd::params::maxmodes,
+  $maxident = $inspircd::params::maxident,
+  $maxquit = $inspircd::params::maxquit,
+  $maxtopic = $inspircd::params::maxtopic,
+  $maxkick = $inspircd::params::maxkick,
+  $maxgecos = $inspircd::params::maxgecos,
+  $maxaway = $inspircd::params::maxaway,
+
+
+  # WHOWAS Configuration
+  $groupsize = $inspircd::params::groupsize,
+  $maxgroups = $inspircd::params::maxgroups,
+  $maxkeep = $inspircd::params::maxkeep,
 
 
 
@@ -89,9 +113,30 @@ class inspircd (
   }->
 
   class { 'inspircd::config':
+
+    admin => $admin,
+    nick  => $nick,
+    email => $email,
+
     motd       => $motd,
     rules      => $rules,
     user       => $user,
+
+    maxnick  => $maxnick,
+    maxchan  => $maxchan,
+    maxmodes => $maxmodes,
+    maxident => $maxident,
+    maxquit  => $maxquit,
+    maxtopic => $maxtopic,
+    maxkick  => $maxkick,
+    maxgecos => $maxgecos,
+    maxaway  => $maxaway,
+
+    groupsize => $groupsize,
+    maxgroups => $maxgroups,
+    maxkeep   => $maxkeep,
+
+
     config_dir => $config_dir,
   }->
 

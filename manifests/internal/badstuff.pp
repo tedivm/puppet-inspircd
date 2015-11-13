@@ -1,4 +1,4 @@
-define inspircd::config::badstuff (
+define inspircd::internal::badstuff (
   $type,
   $content,
   $reason,

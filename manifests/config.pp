@@ -121,7 +121,7 @@ class inspircd::config (
   $user = $inspircd::params::user,
   $config_dir = $inspircd::params::config_dir,
 
-
+  $modules = [],
   $default_modules = $inspircd::params::default_modules,
 
 ) inherits inspircd::params {
@@ -153,9 +153,8 @@ class inspircd::config (
     ssl     => false,
   }
 
-  ::inspircd::config::module { $default_modules:
-
-  }
+  ::inspircd::config::module { $default_modules: }
+  ::inspircd::config::module { $modules: }
 
   if($default_connection) {
     ::inspircd::config::connect { 'default':

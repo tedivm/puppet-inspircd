@@ -1,6 +1,6 @@
 ./configure \
   --disable-interactive \
-<% @extra_modules.each do |value| -%>
+<% @compile_extra_modules.each do |value| -%>
   --enable-extras=m_<%= value %>.cpp \
 <% end -%>
 <% if @gnutls -%>

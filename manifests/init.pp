@@ -171,7 +171,7 @@ class inspircd (
   # System Settings
   $version = $inspircd::params::version,
   $user = $inspircd::params::user,
-  $extra_modules = [],
+  $modules = [],
   $service_ensure = $inspircd::params::service_ensure,
   $epoll = $inspircd::params::epoll,
   $kqueue = $inspircd::params::kqueue,
@@ -190,7 +190,7 @@ class inspircd (
 ) inherits inspircd::params {
 
   class { 'inspircd::packages':
-    extra_modules => $extra_modules,
+    modules => $modules,
   }->
 
   class { 'inspircd::user':
@@ -199,7 +199,7 @@ class inspircd (
 
   class { 'inspircd::install':
     version       => $version,
-    extra_modules => $extra_modules,
+    modules       => $modules,
     epoll         => $epoll,
     kqueue        => $kqueue,
     user          => $user,
@@ -217,6 +217,8 @@ class inspircd (
     server      => $server,
     network     => $network,
     description => $description,
+
+    modules => $modules,
 
     admin => $admin,
     nick  => $nick,

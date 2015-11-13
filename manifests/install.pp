@@ -1,6 +1,6 @@
 class inspircd::install (
   $version = $inspircd::params::version,
-  $extra_modules = [],
+  $modules = [],
   $epoll = $inspircd::params::epoll,
   $kqueue = $inspircd::params::kqueue,
   $user = $inspircd::params::user,
@@ -16,8 +16,10 @@ class inspircd::install (
   $download = "https://github.com/inspircd/inspircd/archive/v${version}.tar.gz"
   $install_dir = "${download_dir}/inspircd-${version}"
 
-  $gnutls = member($extra_modules, 'ssl_gnutls')
-  $openssl = member($extra_modules, 'ssl_openssl')
+  $gnutls = member($modules, 'ssl_gnutls')
+  $openssl = member($modules, 'ssl_openssl')
+
+  $compile_extra_modules = intersection($modules, $extra_modules_list)
 
   file { $base_dir:
     ensure => 'directory',

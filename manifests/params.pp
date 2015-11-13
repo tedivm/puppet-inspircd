@@ -55,6 +55,20 @@ class inspircd::params {
 
   ]
 
+  $extra_modules_list = [
+    'geoip',
+    'ldapauth',
+    'ldapoper',
+    'mssql',
+    'mysql',
+    'pgsql',
+    'gnutls',
+    'openssl',
+    'sqlite',
+    'sqlauth',
+    'sqloper',
+  ]
+
   $user = 'inspircd'
   $service_ensure = 'running'
 

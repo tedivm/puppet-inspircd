@@ -61,6 +61,11 @@ class inspircd::params {
   $motd = ''
   $rules = ''
 
+  $commands = ""
+  $usermodes = ""
+  $chanmodes = ""
+  $fakenonexistant = "yes"
+
   $bind_ip = ""
   $bind_port = "6667"
   $bind_ssl_port = "6697"

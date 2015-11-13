@@ -93,6 +93,12 @@ class inspircd::config (
   $motd = $inspircd::params::motd,
   $rules = $inspircd::params::rules,
 
+  # DISABLED
+  $commands = $inspircd::params::commands,
+  $usermodes = $inspircd::params::usermodes,
+  $chanmodes = $inspircd::params::chanmodes,
+  $fakenonexistant = $inspircd::params::fakenonexistant,
+
   # LIMITS
   $maxnick = $inspircd::params::maxnick,
   $maxchan = $inspircd::params::maxchan,
@@ -259,6 +265,13 @@ class inspircd::config (
     rules      => $rules,
     user       => $user,
     config_dir => $config_dir
+  }
+
+  class {"inspircd::config::disabled":
+    commands        => $commands,
+    usermodes       => $usermodes,
+    chanmodes       => $chanmodes,
+    fakenonexistant => $fakenonexistant,
   }
 
   class { 'inspircd::config::limits':

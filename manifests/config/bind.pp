@@ -3,7 +3,7 @@ define inspircd::config::bind (
   $port = '',
   $type = 'client',
   $ssl = false,
-  $order = 20,
+  $order = "04",
   $config_dir = $inspircd::config_dir,
 ) {
 

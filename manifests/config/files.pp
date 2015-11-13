@@ -18,7 +18,7 @@ class inspircd::config::files (
   concat::fragment { "inspircd config motd":
     target => "${config_dir}/inspircd.conf",
     content => "<files motd=\"${config_dir}/motd.txt\" rules=\"${config_dir}/rules.txt\">\n",
-    order   => '10'
+    order   => '05'
   }
 
 }

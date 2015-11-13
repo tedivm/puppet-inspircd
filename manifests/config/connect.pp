@@ -1,16 +1,47 @@
 define inspircd::config::connect (
-  $address = '',
-  $port = '',
-  $type = 'client',
-  $ssl = false,
-  $order = 21,
-  $config_dir = $inspircd::config_dir,
+  $order = 10,
+  $allow = "*",
+  $port = undef,
+  $maxchans = undef,
+  $timeout = "10",
+  $pingfreq = "120",
+  $hardsendq = "1M",
+  $softsendq = "8192",
+  $recvq = "8K",
+  $threshold = "10",
+  $commandrate = "1000",
+  $fakelag = "on",
+  $localmax = "3",
+  $globalmax = "3",
+  $useident = "no",
+  $limit = "5000",
+  $modes = "+x",
 ) {
 
-  concat::fragment { "${config_dir}/inspircd.conf connect ${name}":
-    target => "${config_dir}/inspircd.conf",
-    content => template('inspircd/config/types/connect.erb'),
-    order   => $order
+  $config = {
+    name => $name,
+    allow => $allow,
+    port => $port,
+    maxchans => $maxchans,
+    timeout => $timeout,
+    pingfreq => $pingfreq,
+    hardsendq => $hardsendq,
+    softsendq => $softsendq,
+    recvq => $recvq,
+    threshold => $threshold,
+    commandrate => $commandrate,
+    fakelag => $fakelag,
+    localmax => $localmax,
+    globalmax => $globalmax,
+    useident => $useident,
+    limit => $limit,
+    modes => $modes,
+  }
+
+  ::inspircd::internal::configblock { "inspircd connect $name ":
+    config_name => "connect",
+    config      => $config,
+    order       => $order
   }
 
 }

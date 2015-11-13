@@ -1,5 +1,5 @@
 define inspircd::config::module (
-  $order = 16,
+  $order = 20,
   $config = {},
   $config_dir = $inspircd::config_dir,
 ) {
@@ -16,7 +16,7 @@ define inspircd::config::module (
     concat::fragment { "${config_dir}/inspircd.conf module ${name} config":
       target => "${config_dir}/inspircd.conf",
       content => template('inspircd/config/types/module_config.erb'),
-      order   => $order + 1
+      order   => $order
     }
   }
 

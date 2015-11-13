@@ -26,10 +26,8 @@ define inspircd::config::section (
 
   # Add an include for this section in the main configuration.
   if($include) {
-    concat::fragment { "inspircd ${name} config include":
-      target => "${config_dir}/inspircd.conf",
-      content => "<include file=\"${config_file}\">\n",
-      order   => '10'
+    ::inspircd::config::include { "${name} config include":
+      path => $config_file
     }
   }
 

@@ -145,7 +145,6 @@ class inspircd::config (
     address => $bind_ip,
     port    => $bind_port,
     type    => 'clients',
-    ssl     => false,
   }
 
   ::inspircd::config::module { $default_modules: }

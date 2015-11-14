@@ -11,7 +11,7 @@ class inspircd::config::whowas (
     maxkeep   => $maxkeep
   }
 
-  ::inspircd::internal::configblock { "inspircd whowas ":
+  ::inspircd::internal::configblock { "inspircd $name":
     config_name => "whowas",
     config      => $config,
     order       => "23"

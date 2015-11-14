@@ -1,13 +1,17 @@
 define inspircd::config::banlist (
-  $chan,
+  $chan = $name,
   $limit,
-  $config_dir = $inspircd::config_dir,
 ) {
 
-  concat::fragment { "${config_dir}/inspircd.conf banlist ${name}":
-    target => "${config_dir}/inspircd.conf",
-    content => template('inspircd/config/types/banlist.erb'),
-    order   => "16"
+  $config = {
+    chan  => $chan,
+    limit => $limit,
+  }
+
+  ::inspircd::internal::configblock { "inspircd banlist $chan":
+    config_name => "banlist",
+    config      => $config,
+    order       => "16"
   }
 
 }

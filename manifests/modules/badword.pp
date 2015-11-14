@@ -2,10 +2,16 @@ define inspircd::modules::badword (
   $replacement = '',
 ){
 
-  concat::fragment { "${config_dir}/modules.conf badword ${name}":
-    target => "${config_dir}/modules.conf",
-    content => template('inspircd/config/types/badword.erb'),
-    order   => $order
+  $config = {
+    name        => $name,
+    replacement => $replacement,
+  }
+
+  ::inspircd::internal::configblock { "inspircd badword $name":
+    config_name => "badword",
+    config      => $config,
+    section     => 'modules',
+    order       => "2"
   }
 
 }

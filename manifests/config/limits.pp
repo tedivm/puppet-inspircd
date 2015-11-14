@@ -23,7 +23,7 @@ class inspircd::config::limits (
     maxaway  => $maxaway,
   }
 
-  ::inspircd::internal::configblock { "inspircd limits ":
+  ::inspircd::internal::configblock { "inspircd $name":
     config_name => "limits",
     config      => $config,
     order       => "21"

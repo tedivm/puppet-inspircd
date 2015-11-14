@@ -4,21 +4,24 @@ define inspircd::internal::badstuff (
   $reason,
   $keyname = false,
   $order = "27",
-  $config_dir = $inspircd::config_dir,
 ) {
 
   assert_private('This type is private.')
 
-  if $keyname {
-    $keyname_norm = $keyname
-  } else {
-    $keyname_norm = $type
+  $config_base = {
+    reason        => $reason,
   }
 
-  concat::fragment { "${config_dir}/inspircd.conf bad${type} ${content}":
-    target => "${config_dir}/inspircd.conf",
-    content => template('inspircd/config/types/badstuff.erb'),
-    order   => $order
+  if $keyname {
+    $config = merge(hash([$keyname, $content]), $config_base)
+  } else {
+    $config = merge(hash([$type, $content]), $config_base)
+  }
+
+  ::inspircd::internal::configblock { "inspircd badstuff ${name}":
+    config_name => "bad${type}",
+    config      => $config,
+    order       => $order
   }
 
 }

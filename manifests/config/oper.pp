@@ -3,23 +3,31 @@ define inspircd::config::oper (
   $host,
   $type,
   $hash = false,
-  $order = 10,
   $config_dir = $inspircd::config_dir,
 ) {
 
   if($hash) {
-      $hash_normalized = "hash=\"${hash}\""
+      $hash_normalized = $hash
       $password_normalized = $password
   } else {
     $string_hash = pw_hash($password, 'SHA-256', fqdn_rand_string(8, '', $name))
     $password_normalized = regsubst($string_hash, '^\$5\$', '')
-    $hash_normalized = 'hash="hmac-sha256"'
+    $hash_normalized = 'hmac-sha256'
   }
 
-  concat::fragment { "${config_dir}/opers.conf oper ${name}":
-    target => "${config_dir}/opers.conf",
-    content => template('inspircd/config/types/oper.erb'),
-    order   => $order
+  $config = {
+    name      => $name,
+    password  => $password_normalized,
+    host      => $host,
+    type      => $type,
+    hash      => $hash_normalized,
   }
 
+  ::inspircd::internal::configblock { "inspircd oper ${name}":
+    config_name => "oper",
+    config      => $config,
+    section     => 'opers',
+    order       => "10"
+  }
+  
 }

@@ -1,13 +1,16 @@
 define inspircd::config::exception (
-  $reason,
-  $config_dir = $inspircd::config_dir,
+  $reason = undef,
 ) {
 
+  $config = {
+    host   => $name,
+    reason => $reason,
+  }
 
-  concat::fragment { "${config_dir}/inspircd.conf exception ${name}":
-    target => "${config_dir}/inspircd.conf",
-    content => template('inspircd/config/types/exception.erb'),
-    order   => "28"
+  ::inspircd::internal::configblock { "inspircd exception $name":
+    config_name => "exception",
+    config      => $config,
+    order       => "28"
   }
 
 }

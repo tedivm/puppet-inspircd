@@ -12,7 +12,7 @@ class inspircd::config::log (
     level  => $level,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
+  ::inspircd::internal::configblock { "inspircd $name":
     config_name => "log",
     config      => $config,
     order       => "22"

@@ -10,7 +10,7 @@ class inspircd::config::server (
     network => $network
   }
 
-  ::inspircd::internal::configblock { "inspircd server ":
+  ::inspircd::internal::configblock { "inspircd $name":
     config_name => "server",
     config      => $config,
     order       => "05"

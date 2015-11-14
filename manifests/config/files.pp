@@ -15,7 +15,7 @@ class inspircd::config::files (
     owner => $user
   }
 
-  concat::fragment { "inspircd config motd":
+  concat::fragment { "inspircd config $name":
     target => "${config_dir}/inspircd.conf",
     content => "<files motd=\"${config_dir}/motd.txt\" rules=\"${config_dir}/rules.txt\">\n",
     order   => '11'

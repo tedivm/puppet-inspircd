@@ -2,20 +2,19 @@ define inspircd::config::bind (
   $address = '',
   $port = '',
   $type = 'client',
-  $ssl = false,
-  $config_dir = $inspircd::config_dir,
+  $ssl = undef,
 ) {
 
-  if $ssl {
-    $ssl_normalized = "ssl=${ssl} "
-  } else {
-    $ssl_normalized = ''
+  $config = {
+    address  => $address,
+    port     => $port,
+    type     => $type,
+    ssl      => $ssl,
   }
 
-  concat::fragment { "${config_dir}/inspircd.conf bind ${name}":
-    target => "${config_dir}/inspircd.conf",
-    content => template('inspircd/config/types/bind.erb'),
-    order   => "07"
+  ::inspircd::internal::configblock { "inspircd bind $name":
+    config_name => "bind",
+    config      => $config,
+    order       => "07"
   }
-
 }

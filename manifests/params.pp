@@ -107,6 +107,7 @@ class inspircd::params {
   $server = $::fqdn
   $network = $::domain
   $description = ''
+  $secret = "secret $::domain"
 
   $users = "20"
   $oper = "60"

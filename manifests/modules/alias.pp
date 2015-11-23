@@ -50,7 +50,8 @@ define inspircd::modules::alias (
   ::inspircd::internal::configblock { "alias ${name}":
     config_name => "alias",
     config => $config,
-    section => 'modules'
+    section => 'modules',
+    order => '12',
   }
 
 }

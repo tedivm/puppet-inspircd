@@ -4,6 +4,7 @@ class inspircd::config (
   $server = $inspircd::params::server,
   $description = $inspircd::params::description,
   $network = $inspircd::params::network,
+  $secret = $inspircd::params::secret,
 
   # ADMIN
   $admin = $inspircd::params::admin,

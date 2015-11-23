@@ -7,6 +7,12 @@ define inspircd::config::module (
     name  => "m_${name}.so",
   }
 
+  if(member(['gnutls', 'openssl'], $name)) {
+    $order = "02"
+  }else{
+    $order = "08"
+  }
+
   ::inspircd::internal::configblock { "inspircd module include ${name}":
     config_name => "module",
     config      => $module_include,
@@ -20,7 +26,7 @@ define inspircd::config::module (
       config_name => $name,
       config      => $config,
       section     => 'modules',
-      order       => "08"
+      order       => $order
     }
   }
 

@@ -4,12 +4,12 @@ class inspircd::profiles::unreal (
 
   $modules = [
     'md5',
-    'sha1',
+    'sha256',
     'alias',
     'allowinvite',
     'alltime',
-    'auditorium'
-    'banexception'
+    'auditorium',
+    'banexception',
     'blockcaps',
     'blockcolor',
     'botmode',
@@ -27,9 +27,9 @@ class inspircd::profiles::unreal (
     'conn_umodes',
     'cycle',
     #'connflood',
-      'dccallow',
+    'dccallow',
     'deaf',
-      'denychans',
+    'denychans',
     'devoice',
       'filter',
     'gecosban',
@@ -37,9 +37,9 @@ class inspircd::profiles::unreal (
     'globalload',
     'halfop',
       'helpop',
-      'hidechans',
+    'hidechans',
     'hideoper',
-      'ident',
+    'ident',
     'inviteexception',
     'joinflood',
     'jumpserver',
@@ -47,13 +47,13 @@ class inspircd::profiles::unreal (
     'messageflood',
     'namesx',
     'nickflood',
-    'notcp',
+    'noctcp',
     'nokicks',
     'nonicks',
     'nopartmsg',
     'nonotice',
     'operchans',
-      'operjoin',
+    'operjoin',
     'operlog',
       'opermotd',
       'override',
@@ -84,8 +84,8 @@ class inspircd::profiles::unreal (
     'sethost',
     'setident',
     'setname',
-      'showhois',
-      'shun',
+    'showwhois',
+    'shun',
     'sslmodes',
     'sslinfo',
     'stripcolor',
@@ -93,12 +93,12 @@ class inspircd::profiles::unreal (
     'swhois',
     'uhnames',
     'userip',
-      'watch',
-    'spanningtree'
+    'watch',
+    'spanningtree',
   ]
 
   $filtered_modules = difference($modules, $exclude_modules)
-  ensure_resources('inspircd::config::module', $filtered_modules)
+  ensure_resource('inspircd::config::module', $filtered_modules)
 
 
   inspircd::modules::alias { 'NICKSERV':
@@ -193,7 +193,7 @@ class inspircd::profiles::unreal (
   class { 'inspircd::modules::chanprotect':
     noservices      => 'no',
     qprefix         => '~',
-    aprefix         => '&amp',
+    aprefix         => '&amp;',
     deprotectself   => 'yes',
     deprotectothers => 'yes',
   }
@@ -205,6 +205,23 @@ class inspircd::profiles::unreal (
   class { 'inspircd::modules::cloak':
     mode => 'half',
     prefix => 'net-'
+  }
+
+  class { 'inspircd::modules::hidechans':
+    affectsopers => 'false',
+  }
+
+  class { 'inspircd::modules::ident':
+    timeout => '1',
+  }
+
+  class { 'inspircd::modules::shun':
+    enabledcommands => 'PING PONG QUIT PART JOIN',
+    notifyuser      => 'no',
+    affectopers     => 'no',
+  }
+
+  class { 'inspircd::modules::helpop':
   }
 
 }

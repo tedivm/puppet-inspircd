@@ -1,7 +1,7 @@
 class inspircd::modules::chanprotect (
   $noservices = 'no',
   $qprefix = '~',
-  $aprefix = '&amp',
+  $aprefix = '&amp;',
   $deprotectself = 'yes',
   $deprotectothers = 'yes',
 ){

@@ -21,7 +21,7 @@ class inspircd::params {
   ]
 
   $packages_gnutls = [
-    'libgnutls-dev ',
+    'libgnutls-dev',
     'gnutls-bin',
   ]
 
@@ -62,21 +62,23 @@ class inspircd::params {
     'mssql',
     'mysql',
     'pgsql',
-    'gnutls',
-    'openssl',
+    'ssl_gnutls',
+    'ssl_openssl',
     'sqlite',
     'sqlauth',
     'sqloper',
   ]
 
-  $user = 'inspircd'
+  $fe = 'inspircd'
   $service_ensure = 'running'
+
+  $ssl_module = 'gnutls'
 
   $motd = ''
   $rules = ''
 
   $commands = ""
-  $usermodes = ""
+  $femodes = ""
   $chanmodes = ""
   $fakenonexistant = "yes"
 
@@ -199,6 +201,7 @@ class inspircd::params {
       $path_make = '/usr/bin/make'
       $path_ls = '/bin/ls'
       $path_rm = '/bin/rm'
+      $path_openssl = '/usr/bin/openssl'
 
       $target = "${log_dir}/ircd.log"
 

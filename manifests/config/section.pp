@@ -11,7 +11,8 @@ define inspircd::config::section (
     warn           => true,
     force          => true,
     order          => 'numeric',
-    ensure_newline => true
+    ensure_newline => true,
+    notify         => Service['inspircd'],
   }
 
   # If any of the config files get changed restart inspircd

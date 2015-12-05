@@ -12,6 +12,7 @@ define inspircd::config::section (
     force          => true,
     order          => 'numeric',
     ensure_newline => true,
+    require        => Class['inspircd::install'],
     notify         => Service['inspircd'],
   }
 

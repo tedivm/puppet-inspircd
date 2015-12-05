@@ -62,17 +62,18 @@ class inspircd::params {
     'mssql',
     'mysql',
     'pgsql',
-    'ssl_gnutls',
-    'ssl_openssl',
+#    'ssl_gnutls',
+#    'ssl_openssl',
     'sqlite',
     'sqlauth',
     'sqloper',
   ]
 
-  $fe = 'inspircd'
+  $user = 'inspircd'
   $service_ensure = 'running'
 
   $ssl_module = 'gnutls'
+  $ssl_hash = 'sha1'
 
   $motd = ''
   $rules = ''
@@ -85,7 +86,7 @@ class inspircd::params {
   $bind_ip = ""
   $bind_port = "6667"
   $bind_ssl_port = "6697"
-
+  $ssl_add_bind = true
 
   $maxnick = "31"
   $maxchan = "64"
@@ -185,14 +186,14 @@ class inspircd::params {
       $epoll = true
       $kqueue = false
 
-      $base_dir = "/opt/inspircd"
+      $base_dir = '/opt/inspircd'
 
       $download_dir = "${base_dir}/downloads"
       $config_dir = "${base_dir}/config"
       $data_dir = "${base_dir}/data"
       $log_dir = "${base_dir}/logs"
 
-      $prefix = "${base_dir}/$version"
+      $prefix = "${base_dir}/${version}"
       $binary_dir = "${prefix}/bin"
       $module_dir = "${prefix}/module"
 
@@ -204,6 +205,9 @@ class inspircd::params {
       $path_openssl = '/usr/bin/openssl'
 
       $target = "${log_dir}/ircd.log"
+
+      $ssl_certfile = "${config_dir}/ssl/cert.pem"
+      $ssl_keyfile = "${config_dir}/ssl/key.pem"
 
     }
   }

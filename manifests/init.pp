@@ -74,6 +74,19 @@ class inspircd (
   $welcomenotice = $inspircd::params::welcomenotice,
 
 
+  # ENABLE SSL
+  $certfile = $inspircd::params::ssl_certfile,
+  $keyfile = $inspircd::params::ssl_keyfile,
+  $dhfile = undef,
+  $cafile = undef,
+  $ssl_hash = $inspircd::params::ssl_hash,
+  $generate = true,
+  $ssl_module = $inspircd::params::ssl_module,
+  $extra_conf = {},
+  $add_bind = $inspircd::params::ssl_add_bind,
+  $bind_port = $inspircd::params::bind_ssl_port,
+
+
   # BIND PORTS
   $bind_ip = $inspircd::params::bind_ip,
   $bind_port = $inspircd::params::bind_port,
@@ -198,18 +211,18 @@ class inspircd (
   }->
 
   class { 'inspircd::install':
-    version       => $version,
-    modules       => $modules,
-    epoll         => $epoll,
-    kqueue        => $kqueue,
-    user          => $user,
-    base_dir      => $base_dir,
-    binary_dir    => $binary_dir,
-    module_dir    => $module_dir,
-    config_dir    => $config_dir,
-    data_dir      => $data_dir,
-    log_dir       => $log_dir,
-    download_dir  => $download_dir,
+    version      => $version,
+    modules      => $modules,
+    epoll        => $epoll,
+    kqueue       => $kqueue,
+    user         => $user,
+    base_dir     => $base_dir,
+    binary_dir   => $binary_dir,
+    module_dir   => $module_dir,
+    config_dir   => $config_dir,
+    data_dir     => $data_dir,
+    log_dir      => $log_dir,
+    download_dir => $download_dir,
   }->
 
   class { 'inspircd::config':
@@ -246,6 +259,19 @@ class inspircd (
     invitebypassmodes  => $invitebypassmodes,
     nosnoticestack     => $nosnoticestack,
     welcomenotice      => $welcomenotice,
+
+
+    certfile       => $certfile,
+    keyfile        => $keyfile,
+    dhfile         => $dhfile,
+    cafile         => $cafile,
+    ssl_hash       => $ssl_hash,
+    generate       => $generate,
+    ssl_module     => $ssl_module,
+    extra_conf     => $extra_conf,
+    add_bind       => $add_bind,
+    bind_ssl_port  => $bind_ssl_port,
+
 
     bind_ip      => $bind_ip,
     bind_port    => $bind_port,
@@ -329,5 +355,7 @@ class inspircd (
     prefix         => $prefix,
     service_ensure => $service_ensure,
   }
+
+
 
 }

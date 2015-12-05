@@ -35,6 +35,18 @@ class inspircd::config (
   $nosnoticestack = $inspircd::params::nosnoticestack,
   $welcomenotice = $inspircd::params::welcomenotice,
 
+  # ENABLE SSL
+  $certfile = $inspircd::params::ssl_certfile,
+  $keyfile = $inspircd::params::ssl_keyfile,
+  $dhfile = undef,
+  $cafile = undef,
+  $ssl_hash = $inspircd::params::ssl_hash,
+  $generate = true,
+  $ssl_module = $inspircd::params::ssl_module,
+  $extra_conf = {},
+  $add_bind = $inspircd::params::ssl_add_bind,
+  $bind_ssl_port = $inspircd::params::bind_ssl_port,
+
   # BIND PORTS
   $bind_ip = $inspircd::params::bind_ip,
   $bind_port = $inspircd::params::bind_port,
@@ -142,7 +154,7 @@ class inspircd::config (
 
   ## Individual Settings
 
-  ::inspircd::config::bind { "default unencrypted port":
+  ::inspircd::config::bind { 'default unencrypted port':
     address => $bind_ip,
     port    => $bind_port,
     type    => 'clients',
@@ -254,14 +266,14 @@ class inspircd::config (
     userstats           => $userstats,
   }
 
-  class {"inspircd::config::files":
+  class {'inspircd::config::files':
     motd       => $motd,
     rules      => $rules,
     user       => $user,
     config_dir => $config_dir
   }
 
-  class {"inspircd::config::disabled":
+  class {'inspircd::config::disabled':
     commands        => $commands,
     usermodes       => $usermodes,
     chanmodes       => $chanmodes,
@@ -287,12 +299,28 @@ class inspircd::config (
   }
 
   ::inspircd::config::banlist { 'default':
-    chan  => "*",
-    limit => "70"
+    chan  => '*',
+    limit => '70'
   }
 
   ::inspircd::config::badnick { $services_users:
     reason => 'Reserved for Services.'
   }
+
+  if($ssl_module != false) {
+    class { 'inspircd::config::ssl':
+      certfile   => $certfile,
+      keyfile    => $keyfile,
+      dhfile     => $dhfile,
+      cafile     => $cafile,
+      hash       => $ssl_hash,
+      generate   => $generate,
+      module     => $module,
+      extra_conf => $extra_conf,
+      add_bind   => $add_bind,
+      bind_port  => $bind_ssl_port,
+    }
+  }
+
 
 }

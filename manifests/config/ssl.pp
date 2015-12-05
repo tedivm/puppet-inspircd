@@ -1,14 +1,14 @@
 class inspircd::config::ssl (
-  $certfile = "${::inspircd::config::config_dir}/ssl/cert.pem",
-  $keyfile = "${::inspircd::config::config_dir}/ssl/key.pem",
+  $certfile = $inspircd::params::ssl_certfile,
+  $keyfile = $inspircd::params::ssl_keyfile,
   $dhfile = undef,
   $cafile = undef,
-  $hash = "sha1",
+  $hash = $inspircd::params::ssl_hash,
   $generate = true,
   $module = $inspircd::params::ssl_module,
   $extra_conf = {},
-  $add_bind = false,
-  $bind_port = '6697'
+  $add_bind = $inspircd::params::ssl_add_bind,
+  $bind_port = $inspircd::params::bind_ssl_port,
 ) inherits inspircd::params {
 
   if($module == 'openssl'){

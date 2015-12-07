@@ -8,10 +8,10 @@ define inspircd::config::dns (
     server => $server,
   }
 
-  ::inspircd::internal::configblock { "inspircd dns $name ":
-    config_name => "dns",
+  ::inspircd::internal::configblock { "inspircd dns ${name} ":
+    config_name => 'dns',
     config      => $config,
-    order       => "14"
+    order       => '14'
   }
 
 }

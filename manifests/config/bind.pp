@@ -12,9 +12,9 @@ define inspircd::config::bind (
     ssl      => $ssl,
   }
 
-  ::inspircd::internal::configblock { "inspircd bind $name":
-    config_name => "bind",
+  ::inspircd::internal::configblock { "inspircd bind ${name}":
+    config_name => 'bind',
     config      => $config,
-    order       => "07"
+    order       => '07'
   }
 }

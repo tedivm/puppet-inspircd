@@ -14,7 +14,7 @@ class inspircd::modules::chanprotect (
     deprotectothers => $deprotectothers,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
+  ::inspircd::internal::configblock { "inspircd ${name} ":
     config_name => 'chanprotect',
     config      => $config,
     section     => 'modules'

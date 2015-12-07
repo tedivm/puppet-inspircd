@@ -6,7 +6,7 @@ class inspircd::modules::ident (
     timeout => $timeout,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
+  ::inspircd::internal::configblock { "inspircd ${name} ":
     config_name => 'ident',
     config      => $config,
     section     => 'modules'

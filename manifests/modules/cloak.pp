@@ -10,7 +10,7 @@ class inspircd::modules::cloak (
     prefix => $prefix,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
+  ::inspircd::internal::configblock { "inspircd ${name} ":
     config_name => 'cloak',
     config      => $config,
     section     => 'modules'

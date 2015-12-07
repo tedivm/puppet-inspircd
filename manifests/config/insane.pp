@@ -12,10 +12,10 @@ class inspircd::config::insane (
     trigger => $trigger,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name":
-    config_name => "insane",
+  ::inspircd::internal::configblock { "inspircd ${name}":
+    config_name => 'insane',
     config      => $config,
-    order       => "29"
+    order       => '29'
   }
 
 }

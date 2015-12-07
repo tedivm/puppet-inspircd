@@ -10,7 +10,7 @@ class inspircd::modules::dccallow (
     action    => $action,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
+  ::inspircd::internal::configblock { "inspircd ${name} ":
     config_name => 'dccallow',
     config      => $config,
     section     => 'modules'

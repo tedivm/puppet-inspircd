@@ -7,18 +7,18 @@ class inspircd::config::files (
 
   file { "${config_dir}/motd.txt":
     content => "${motd}\n",
-    owner => $user,
+    owner   => $user,
     require => Class['inspircd::install']
   }
 
   file { "${config_dir}/rules.txt":
     content => "${rules}\n",
-    owner => $user,
+    owner   => $user,
     require => Class['inspircd::install']
   }
 
-  concat::fragment { "inspircd config $name":
-    target => "${config_dir}/inspircd.conf",
+  concat::fragment { "inspircd config ${name}":
+    target  => "${config_dir}/inspircd.conf",
     content => "<files motd=\"${config_dir}/motd.txt\" rules=\"${config_dir}/rules.txt\">\n",
     order   => '11'
   }

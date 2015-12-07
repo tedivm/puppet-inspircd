@@ -3,7 +3,7 @@ class inspircd::modules::openssl (
   $keyfile,
   $dhfile = undef,
   $cafile = undef,
-  $hash = "sha1",
+  $hash = 'sha1',
   $ciphers = undef,
   $customcontextoptions = undef,
   $cipherserverpref = undef,
@@ -28,7 +28,7 @@ class inspircd::modules::openssl (
     tlsv1                => $tlsv1,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
+  ::inspircd::internal::configblock { "inspircd ${name} ":
     config_name => 'openssl',
     config      => $config,
     section     => 'modules'

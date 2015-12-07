@@ -8,10 +8,10 @@ class inspircd::config::channels (
     oper => $oper,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
-    config_name => "channels",
+  ::inspircd::internal::configblock { "inspircd ${name} ":
+    config_name => 'channels',
     config      => $config,
-    order       => "12"
+    order       => '12'
   }
 
 }

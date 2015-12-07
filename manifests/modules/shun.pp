@@ -10,7 +10,7 @@ class inspircd::modules::shun (
     affectopers     => $affectopers,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
+  ::inspircd::internal::configblock { "inspircd ${name} ":
     config_name => 'shun',
     config      => $config,
     section     => 'modules'

@@ -3,11 +3,11 @@ define inspircd::config::badip (
 ){
 
   inspircd::internal::badstuff { "ip ${name}":
-      type => 'ip',
+      type    => 'ip',
       keyname => 'ipmask',
       content => $name,
-      reason => $reason,
-      order => "24",
+      reason  => $reason,
+      order   => '24',
   }
 
 }

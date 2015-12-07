@@ -7,10 +7,10 @@ class inspircd::user (
   }->
 
   user { $user:
-    ensure => 'present',
-    home => "/home/$user",
+    ensure     => 'present',
+    home       => "/home/${user}",
     managehome => true,
-    gid => $user
+    gid        => $user
   }
 
 }

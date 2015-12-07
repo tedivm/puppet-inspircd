@@ -16,10 +16,10 @@ class inspircd::config::performance (
     nouserdns      => $nouserdns,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
-    config_name => "performance",
+  ::inspircd::internal::configblock { "inspircd ${name} ":
+    config_name => 'performance',
     config      => $config,
-    order       => "19"
+    order       => '19'
   }
 
 }

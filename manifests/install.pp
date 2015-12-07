@@ -27,59 +27,59 @@ class inspircd::install (
 
   file { $data_dir:
     ensure => 'directory',
-    owner => $user
+    owner  => $user
   }->
 
   file { $log_dir:
     ensure => 'directory',
-    owner => $user
+    owner  => $user
   }->
 
-  file { "$log_dir/startup.log":
+  file { "${log_dir}/startup.log":
     ensure => 'file',
-    owner => $user
+    owner  => $user
   }->
 
   file { $download_dir:
     ensure => 'directory',
   }->
 
-  exec { "inspircd wget":
+  exec { 'inspircd wget':
     command => "${path_wget} ${download} -P ${download_dir}",
     creates => "${download_dir}/v${version}.tar.gz",
   }~>
 
-  exec { "inspircd untar":
+  exec { 'inspircd untar':
     command => "${path_tar} -zxvf ${download_dir}/v${version}.tar.gz -C ${download_dir}",
     creates => $install_dir,
   }~>
 
   file { "${install_dir}/configure_wrapper.sh":
     content => template('inspircd/configure_wrapper.erb'),
-    mode => '0744',
+    mode    => '0744',
   }~>
 
-  exec { "inspircd configure":
-    command => "${install_dir}/configure_wrapper.sh",
-    cwd => $install_dir,
+  exec { 'inspircd configure':
+    command     => "${install_dir}/configure_wrapper.sh",
+    cwd         => $install_dir,
     refreshonly => true,
   }~>
 
   exec { 'inspircd make':
-    command => "${path_make}",
-    cwd => $install_dir,
+    command     => $path_make,
+    cwd         => $install_dir,
     refreshonly => true,
   }~>
 
   exec { 'inspircd make install':
-    command => "${path_make} install",
-    cwd => $install_dir,
+    command     => "${path_make} install",
+    cwd         => $install_dir,
     refreshonly => true,
   }->
 
-  exec { "inspircd erase examples directory":
+  exec { 'inspircd erase examples directory':
     command => "${path_rm} -R ${config_dir}/examples",
-    onlyif => "${path_ls} -1 ${config_dir}/examples"
+    onlyif  => "${path_ls} -1 ${config_dir}/examples"
   }
 
 }

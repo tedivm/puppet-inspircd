@@ -220,9 +220,9 @@ class inspircd::config (
 
   class { 'inspircd::config::insane':
     hostmasks => $hostmasks,
-    ipmasks => $ipmasks,
+    ipmasks   => $ipmasks,
     nickmasks => $nickmasks,
-    trigger => $trigger,
+    trigger   => $trigger,
   }
 
   class { 'inspircd::config::log':

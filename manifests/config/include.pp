@@ -13,9 +13,9 @@ define inspircd::config::include (
   }
 
   concat::fragment { "${config_dir}/inspircd.conf include ${name}":
-    target => "${config_dir}/inspircd.conf",
+    target  => "${config_dir}/inspircd.conf",
     content => $fragment_content,
-    order   => "13"
+    order   => '13'
   }
 
 }

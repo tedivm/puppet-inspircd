@@ -9,7 +9,7 @@ define inspircd::modules::exception (
 ) {
 
   concat::fragment { "${config_dir}/modules.conf exception ${name}":
-    target => "${config_dir}/modules.conf",
+    target  => "${config_dir}/modules.conf",
     content => template('inspircd/config/types/keyword_exemption.erb'),
     order   => $order
   }

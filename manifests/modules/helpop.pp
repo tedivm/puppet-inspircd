@@ -14,14 +14,14 @@ class inspircd::modules::helpop (
 
   file { $config_path:
     content => "${content_norm}\n",
-    owner => $user
+    owner   => $user
   }
 
   $config = {
     file => $config_path,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
+  ::inspircd::internal::configblock { "inspircd ${name} ":
     config_name => 'include',
     config      => $config,
     section     => 'modules'

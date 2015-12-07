@@ -24,10 +24,10 @@ define inspircd::config::oper (
   }
 
   ::inspircd::internal::configblock { "inspircd oper ${name}":
-    config_name => "oper",
+    config_name => 'oper',
     config      => $config,
     section     => 'opers',
-    order       => "10"
+    order       => '10'
   }
   
 }

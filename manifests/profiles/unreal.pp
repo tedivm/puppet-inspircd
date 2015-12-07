@@ -102,88 +102,88 @@ class inspircd::profiles::unreal (
 
 
   inspircd::modules::alias { 'NICKSERV':
-    replace  => "PRIVMSG NickServ :$2-",
+    replace  => 'PRIVMSG NickServ :$2-',
     requires => 'NickServ',
     uline    => 'yes'
   }
 
   inspircd::modules::alias { 'CHANSERV':
-    replace  => "PRIVMSG ChanServ :$2-",
+    replace  => 'PRIVMSG ChanServ :$2-',
     requires => 'ChanServ',
     uline    => 'yes'
   }
 
   inspircd::modules::alias { 'OPERSERV':
-    replace  => "PRIVMSG OperServ :$2-",
+    replace  => 'PRIVMSG OperServ :$2-',
     requires => 'OperServ',
     uline    => 'yes',
     operonly => 'yes'
   }
 
   inspircd::modules::alias { 'BOTSERV':
-    replace  => "PRIVMSG BotServ :$2-",
+    replace  => 'PRIVMSG BotServ :$2-',
     requires => 'BotServ',
     uline    => 'yes'
   }
 
   inspircd::modules::alias { 'HOSTSERV':
-    replace  => "PRIVMSG HostServ :$2-",
+    replace  => 'PRIVMSG HostServ :$2-',
     requires => 'HostServ',
     uline    => 'yes'
   }
 
   inspircd::modules::alias { 'MEMOSERV':
-    replace  => "PRIVMSG MemoServ :$2-",
+    replace  => 'PRIVMSG MemoServ :$2-',
     requires => 'MemoServ',
     uline    => 'yes'
   }
 
   inspircd::modules::alias { 'NS':
-    replace  => "PRIVMSG NickServ :$2-",
+    replace  => 'PRIVMSG NickServ :$2-',
     requires => 'NickServ',
     uline    => 'yes'
   }
 
   inspircd::modules::alias { 'CS':
-    replace  => "PRIVMSG ChanServ :$2-",
+    replace  => 'PRIVMSG ChanServ :$2-',
     requires => 'ChanServ',
     uline    => 'yes'
   }
 
   inspircd::modules::alias { 'OS':
-    replace  => "PRIVMSG OperServ :$2-",
+    replace  => 'PRIVMSG OperServ :$2-',
     requires => 'OperServ',
     uline    => 'yes',
     operonly => 'yes'
   }
 
   inspircd::modules::alias { 'BS':
-    replace  => "PRIVMSG BotServ :$2-",
+    replace  => 'PRIVMSG BotServ :$2-',
     requires => 'BotServ',
     uline    => 'yes'
   }
 
   inspircd::modules::alias { 'HS':
-    replace  => "PRIVMSG HostServ :$2-",
+    replace  => 'PRIVMSG HostServ :$2-',
     requires => 'HostServ',
     uline    => 'yes'
   }
 
   inspircd::modules::alias { 'MS':
-    replace  => "PRIVMSG MemoServ :$2-",
+    replace  => 'PRIVMSG MemoServ :$2-',
     requires => 'MemoServ',
     uline    => 'yes'
   }
 
   class { 'inspircd::modules::auditorium':
-    showops => 'yes',
+    showops      => 'yes',
     operoverride => 'yes',
   }
 
   class { 'inspircd::modules::blockcaps':
-    percent  => '50',
-    minlen   => '5',
-    capsmap  => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ! ',
+    percent => '50',
+    minlen  => '5',
+    capsmap => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ! ',
   }
 
   class { 'inspircd::modules::chanfilter':
@@ -203,12 +203,12 @@ class inspircd::profiles::unreal (
   }
 
   class { 'inspircd::modules::cloak':
-    mode => 'half',
+    mode   => 'half',
     prefix => 'net-'
   }
 
   class { 'inspircd::modules::hidechans':
-    affectsopers => 'false',
+    affectsopers => false,
   }
 
   class { 'inspircd::modules::ident':

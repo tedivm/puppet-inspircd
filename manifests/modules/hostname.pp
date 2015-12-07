@@ -6,7 +6,7 @@ class inspircd::modules::hostname (
     charmap => $charmap,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
+  ::inspircd::internal::configblock { "inspircd ${name} ":
     config_name => 'hostname',
     config      => $config,
     section     => 'modules'

@@ -8,11 +8,11 @@ define inspircd::modules::banfile (
     action  => $action,
   }
 
-  ::inspircd::internal::configblock { "inspircd banfile $name":
-    config_name => "banfile",
+  ::inspircd::internal::configblock { "inspircd banfile ${name}":
+    config_name => 'banfile',
     config      => $config,
     section     => 'modules',
-    order       => "2"
+    order       => '2'
   }
 
 }

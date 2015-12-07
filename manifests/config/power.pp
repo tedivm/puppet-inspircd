@@ -10,7 +10,7 @@ class inspircd::config::power (
       $diepass_normalized = $diepass
   } else {
 
-    $hash_normalized = "hmac-sha256"
+    $hash_normalized = 'hmac-sha256'
 
     $restartpass_hash = pw_hash($restartpass, 'SHA-256', fqdn_rand_string(8, '', "${name} restart pass"))
     $restartpass_normalized = regsubst($restartpass_hash, '^\$5\$', '')
@@ -26,9 +26,9 @@ class inspircd::config::power (
     hash => $hash_normalized,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
-    config_name => "power",
+  ::inspircd::internal::configblock { "inspircd ${name} ":
+    config_name => 'power',
     config      => $config,
-    order       => "08"
+    order       => '08'
   }
 }

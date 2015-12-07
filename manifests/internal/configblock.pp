@@ -20,7 +20,7 @@ define inspircd::internal::configblock (
   # If module configuration is available use it.
   if !empty($config) {
     concat::fragment { "${config_dir}/${section}.conf ${section} ${name} config":
-      target => "${config_dir}/${section}.conf",
+      target  => "${config_dir}/${section}.conf",
       content => template($template),
       order   => $order + 1
     }

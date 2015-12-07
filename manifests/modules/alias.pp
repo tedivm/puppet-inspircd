@@ -12,27 +12,27 @@ define inspircd::modules::alias (
 ) {
 
   if($usercommand) {
-    $usercommand_norm = "yes"
+    $usercommand_norm = 'yes'
   } else {
-    $usercommand_norm = "no"
+    $usercommand_norm = 'no'
   }
 
   if($channelcommand) {
-    $channelcommand_norm = "yes"
+    $channelcommand_norm = 'yes'
   } else {
-    $channelcommand_norm = "no"
+    $channelcommand_norm = 'no'
   }
 
   if($uline) {
-    $uline_norm = "yes"
+    $uline_norm = 'yes'
   } else {
-    $uline_norm = "no"
+    $uline_norm = 'no'
   }
 
   if($operonly) {
-    $operonly_norm = "yes"
+    $operonly_norm = 'yes'
   } else {
-    $operonly_norm = "no"
+    $operonly_norm = 'no'
   }
 
   $config = {
@@ -48,10 +48,10 @@ define inspircd::modules::alias (
   }
 
   ::inspircd::internal::configblock { "alias ${name}":
-    config_name => "alias",
-    config => $config,
-    section => 'modules',
-    order => '12',
+    config_name => 'alias',
+    config      => $config,
+    section     => 'modules',
+    order       => '12',
   }
 
 }

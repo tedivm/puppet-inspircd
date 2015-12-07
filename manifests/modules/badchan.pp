@@ -11,11 +11,11 @@ define inspircd::modules::badchan (
     reason     => $reason,
   }
 
-  ::inspircd::internal::configblock { "inspircd badword $name":
-    config_name => "badchan",
+  ::inspircd::internal::configblock { "inspircd badword ${name}":
+    config_name => 'badchan',
     config      => $config,
     section     => 'modules',
-    order       => "2"
+    order       => '2'
   }
 
 }

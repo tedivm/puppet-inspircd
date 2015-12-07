@@ -36,10 +36,10 @@ class inspircd::config::security (
     userstats           => $userstats,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
-    config_name => "security",
+  ::inspircd::internal::configblock { "inspircd ${name} ":
+    config_name => 'security',
     config      => $config,
-    order       => "20"
+    order       => '20'
   }
 
 }

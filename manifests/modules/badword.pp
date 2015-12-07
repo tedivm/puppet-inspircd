@@ -7,11 +7,11 @@ define inspircd::modules::badword (
     replacement => $replacement,
   }
 
-  ::inspircd::internal::configblock { "inspircd badword $name":
-    config_name => "badword",
+  ::inspircd::internal::configblock { "inspircd badword ${name}":
+    config_name => 'badword',
     config      => $config,
     section     => 'modules',
-    order       => "2"
+    order       => '2'
   }
 
 }

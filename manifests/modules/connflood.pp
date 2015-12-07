@@ -14,7 +14,7 @@ class inspircd::modules::connflood (
     bootwait => $bootwait,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
+  ::inspircd::internal::configblock { "inspircd ${name} ":
     config_name => 'connflood',
     config      => $config,
     section     => 'modules'

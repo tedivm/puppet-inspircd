@@ -1,21 +1,21 @@
 define inspircd::config::connect (
-  $order = "20",
-  $allow = "*",
+  $order = '20',
+  $allow = '*',
   $port = undef,
   $maxchans = undef,
-  $timeout = "10",
-  $pingfreq = "120",
-  $hardsendq = "1M",
-  $softsendq = "8192",
-  $recvq = "8K",
-  $threshold = "10",
-  $commandrate = "1000",
-  $fakelag = "on",
-  $localmax = "3",
-  $globalmax = "3",
-  $useident = "no",
-  $limit = "5000",
-  $modes = "+x",
+  $timeout = '10',
+  $pingfreq = '120',
+  $hardsendq = '1M',
+  $softsendq = '8192',
+  $recvq = '8K',
+  $threshold = '10',
+  $commandrate = '1000',
+  $fakelag = 'on',
+  $localmax = '3',
+  $globalmax = '3',
+  $useident = 'no',
+  $limit = '5000',
+  $modes = '+x',
 ) {
 
   $config = {
@@ -38,10 +38,10 @@ define inspircd::config::connect (
     modes => $modes,
   }
 
-  ::inspircd::internal::configblock { "inspircd connect $name ":
-    config_name => "connect",
+  ::inspircd::internal::configblock { "inspircd connect ${name} ":
+    config_name => 'connect',
     config      => $config,
-    section     => "connections",
+    section     => 'connections',
     order       => $order
   }
 

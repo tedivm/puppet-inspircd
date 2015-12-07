@@ -3,10 +3,10 @@ define inspircd::config::badhost (
 ){
 
   inspircd::internal::badstuff { "host ${name}":
-      type => 'host',
+      type    => 'host',
       content => $name,
-      reason => $reason,
-      order => "26",
+      reason  => $reason,
+      order   => '26',
   }
 
 }

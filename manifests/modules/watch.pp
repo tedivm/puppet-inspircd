@@ -8,7 +8,7 @@ class inspircd::modules::watch (
     maxentries => $maxentries,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
+  ::inspircd::internal::configblock { "inspircd ${name} ":
     config_name => 'watch',
     config      => $config,
     section     => 'modules'

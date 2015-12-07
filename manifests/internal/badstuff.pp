@@ -3,7 +3,7 @@ define inspircd::internal::badstuff (
   $content,
   $reason,
   $keyname = false,
-  $order = "27",
+  $order = '27',
 ) {
 
   assert_private('This type is private.')

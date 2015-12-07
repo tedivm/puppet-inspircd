@@ -1,7 +1,7 @@
 class inspircd::modules::blockcaps (
   $percent,
   $minlen,
-  $capsmap="ABCDEFGHIJKLMNOPQRSTUVWXYZ! "
+  $capsmap='ABCDEFGHIJKLMNOPQRSTUVWXYZ! '
 ){
 
   $config = {
@@ -10,7 +10,7 @@ class inspircd::modules::blockcaps (
     capsmap => $capsmap,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
+  ::inspircd::internal::configblock { "inspircd ${name} ":
     config_name => 'blockcaps',
     config      => $config,
     section     => 'modules'

@@ -33,7 +33,7 @@ class inspircd::config::ssl (
   ensure_resource('class', $sslclass, $final_options)
 
   if($add_bind){
-    ::inspircd::config::bind { "default ssl port":
+    ::inspircd::config::bind { 'default ssl port':
       address => $::inspircd::config::bind_ip,
       port    => $bind_port,
       type    => 'clients',

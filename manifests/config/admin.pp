@@ -11,10 +11,10 @@ class inspircd::config::admin (
     email => $email,
   }
 
-  ::inspircd::internal::configblock { "inspircd admin ":
-    config_name => "admin",
+  ::inspircd::internal::configblock { 'inspircd admin ':
+    config_name => 'admin',
     config      => $config,
-    order       => "06"
+    order       => '06'
   }
 
 

@@ -8,7 +8,7 @@ class inspircd::modules::auditorium (
     operoverride => $operoverride,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
+  ::inspircd::internal::configblock { "inspircd ${name} ":
     config_name => 'auditorium',
     config      => $config,
     section     => 'modules'

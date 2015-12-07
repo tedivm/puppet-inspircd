@@ -10,12 +10,12 @@ class inspircd::service (
   service { 'inspircd':
     provider   => 'base',
     ensure     => $service_ensure,
-    start      => "$su \"${binary} start && ${binary} status | grep -q 'InspIRCd is running'\"",
-    stop       => "$su \"${binary} stop\"",
+    start      => "${su} \"${binary} start && ${binary} status | grep -q 'InspIRCd is running'\"",
+    stop       => "${su} \"${binary} stop\"",
     hasrestart => false,
-    restart    => "$su \"${binary} restart\"",
+    restart    => "${su} \"${binary} restart\"",
     hasstatus  => false,
-    status     => "$su \"${binary} status | grep -q 'InspIRCd is running'\"",
+    status     => "${su} \"${binary} status | grep -q 'InspIRCd is running'\"",
   }
 
 }

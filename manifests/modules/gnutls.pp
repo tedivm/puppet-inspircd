@@ -3,10 +3,10 @@ class inspircd::modules::gnutls (
   $keyfile,
   $dhfile = undef,
   $cafile = undef,
-  $hash = "sha1",
+  $hash = 'sha1',
   $crlfile = undef,
-  $dhbits = "1024",
-  $priority = "NORMAL:-MD5",
+  $dhbits = '1024',
+  $priority = 'NORMAL:-MD5',
   $generate = true,
 ){
 
@@ -21,7 +21,7 @@ class inspircd::modules::gnutls (
     priority => $priority,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
+  ::inspircd::internal::configblock { "inspircd ${name} ":
     config_name => 'gnutls',
     config      => $config,
     section     => 'modules'

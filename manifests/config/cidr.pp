@@ -8,10 +8,10 @@ class inspircd::config::cidr (
     ipv6clone => $ipv6clone,
   }
 
-  ::inspircd::internal::configblock { "inspircd $name ":
-    config_name => "cidr",
+  ::inspircd::internal::configblock { "inspircd ${name} ":
+    config_name => 'cidr',
     config      => $config,
-    order       => "10"
+    order       => '10'
   }
 
 }

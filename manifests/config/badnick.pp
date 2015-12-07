@@ -3,10 +3,10 @@ define inspircd::config::badnick (
 ) {
 
   inspircd::internal::badstuff { "nick ${name}":
-      type => 'nick',
+      type    => 'nick',
       content => $name,
-      reason => $reason,
-      order => "25",
+      reason  => $reason,
+      order   => '25',
   }
 
 }

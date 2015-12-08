@@ -13,3 +13,5 @@ tmtags
 ## VIM
 *.swp
 tags
+
+/pkg

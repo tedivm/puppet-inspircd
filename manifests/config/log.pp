@@ -8,7 +8,7 @@ class inspircd::config::log (
   $config = {
     method => $method,
     target => $target,
-    type   => $type,
+    'type' => $type,
     level  => $level,
   }
 

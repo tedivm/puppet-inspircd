@@ -19,7 +19,7 @@ define inspircd::config::oper (
     name      => $name,
     password  => $password_normalized,
     host      => $host,
-    type      => $type,
+    'type'    => $type,
     hash      => $hash_normalized,
   }
 
@@ -29,5 +29,5 @@ define inspircd::config::oper (
     section     => 'opers',
     order       => '10'
   }
-  
+
 }

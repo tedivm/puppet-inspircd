@@ -1,4 +1,4 @@
-define inspircd::modules::exception (
+define inspircd::modules::exemption (
   $pattern,
   $reason = '',
   $action = 'none',
@@ -8,7 +8,7 @@ define inspircd::modules::exception (
   $config_dir = $inspircd::config_dir,
 ) {
 
-  concat::fragment { "${config_dir}/modules.conf exception ${name}":
+  concat::fragment { "${config_dir}/modules.conf exemption ${name}":
     target  => "${config_dir}/modules.conf",
     content => template('inspircd/config/types/keyword_exemption.erb'),
     order   => $order

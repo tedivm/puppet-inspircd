@@ -8,7 +8,7 @@ define inspircd::config::bind (
   $config = {
     address  => $address,
     port     => $port,
-    type     => $type,
+    'type'   => $type,
     ssl      => $ssl,
   }
 

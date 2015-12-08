@@ -2,7 +2,13 @@
   "name": "tedivm/inspircd",
   "version": "0.1.0",
   "author": "tedivm",
-  "summary": null,
+  "summary": "Manage InspIRCd based IRC Networks",
+  "tags": [
+    "irc",
+    "ircd",
+    "inspircd",
+    "communication"
+  ],
   "license": "MIT",
   "source": "https://github.com/tedivm/puppet-inspircd",
   "project_page": "https://github.com/tedivm/puppet-inspircd",

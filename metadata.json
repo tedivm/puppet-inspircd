@@ -18,5 +18,5 @@
   ],
   "operatingsystem_support": [
     { "operatingsystem": "Ubuntu", "operatingsystemrelease": ["14.04"]}
-  ],
+  ]
 }

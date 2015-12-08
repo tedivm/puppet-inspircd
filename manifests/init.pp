@@ -84,7 +84,7 @@ class inspircd (
   $ssl_module = $inspircd::params::ssl_module,
   $extra_conf = {},
   $add_bind = $inspircd::params::ssl_add_bind,
-  $bind_port = $inspircd::params::bind_ssl_port,
+  $bind_ssl_port = $inspircd::params::bind_ssl_port,
 
 
   # BIND PORTS

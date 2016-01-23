@@ -2,39 +2,78 @@ class inspircd::params {
 
   $version = '2.0.20'
 
-  $packages = [
-    'build-essential',
-    'g++',
-    'gcc',
+  case $::osfamily {
+    'debian': {
+      $packages = [
+        'build-essential',
+        'g++',
+        'gcc',
 
-    'pkg-config',
-    'libwww-perl',
+        'pkg-config',
+        'libwww-perl',
 
-    # regex
-    'libpcre3-dev',
-    'libtre-dev'
-  ]
+        # regex
+        'libpcre3-dev',
+        'libtre-dev'
+      ]
 
-  $packages_ldap = [
-    'ldap-utils',
-    'libldap2-dev'
-  ]
+      $packages_ldap = [
+        'ldap-utils',
+        'libldap2-dev'
+      ]
 
-  $packages_gnutls = [
-    'libgnutls-dev',
-    'gnutls-bin',
-  ]
+      $packages_gnutls = [
+        'libgnutls-dev',
+        'gnutls-bin',
+      ]
 
-  $packages_openssl = [
-    'libssl1.0.0',
-    'libssl-dev',
-    'openssl',
-    'libcurl4-openssl-dev',
-  ]
+      $packages_openssl = [
+        'libssl1.0.0',
+        'libssl-dev',
+        'openssl',
+        'libcurl4-openssl-dev',
+      ]
 
-  $packages_geoip = [
-    'libgeoip-dev',
-  ]
+      $packages_geoip = [
+        'libgeoip-dev',
+      ]
+    }
+    'redhat': {
+      $packages = [
+        'gcc',
+        'gcc-c++',
+
+        'pkgconfig',
+        'perl-libwww-perl',
+
+        'pcre',
+        'pcre-devel'
+      ]
+
+      $packages_ldap = [
+        'openldap',
+        'openldap-devel'
+      ]
+
+      $packages_gnutls = [
+        'gnutls',
+        'gnutls-devel',
+        'gnutls-utils',
+      ]
+
+      $packages_openssl = [
+        'openssl',
+        'openssl-devel',
+      ]
+
+      $packages_geoip = [
+        'geoip-devel',
+      ]
+    }
+    default: {
+      fail("Unsupported osfamily ${::osfamily}")
+    }
+  }
 
   $services_users = [
     'chanserv',

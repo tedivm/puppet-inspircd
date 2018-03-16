@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export PERL5LIB=<%= @install_dir %>
 ./configure \
   --disable-interactive \
 <% @compile_extra_modules.each do |value| -%>

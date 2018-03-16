@@ -94,7 +94,7 @@ class inspircd (
 
   # CHANNELS
   $users = $inspircd::params::users,
-  $oper = $inspircd::params::oper,
+  $opers = $inspircd::params::opers,
 
 
   # CIDR

@@ -118,7 +118,7 @@ class inspircd::params {
   $rules = ''
 
   $commands = ''
-  $femodes = ''
+  $usermodes = ''
   $chanmodes = ''
   $fakenonexistant = 'yes'
 
@@ -152,7 +152,7 @@ class inspircd::params {
   $secret = "secret ${::domain}"
 
   $users = '20'
-  $oper = '60'
+  $opers = '60'
 
   $ipv4clone = '32'
   $ipv6clone = '128'

@@ -17,10 +17,10 @@
 <% if @kqueue -%>
   --enable-kqueue \
 <% end -%>
-  --prefix=<%= prefix %> \
-  --binary-dir=<%= binary_dir %> \
-  --module-dir=<%= module_dir %> \
-  --config-dir=<%= config_dir %> \
-  --data-dir=<%= data_dir %> \
-  --log-dir=<%= log_dir %> \
-  --uid=<%= user %>
+  --prefix=<%= @prefix %> \
+  --binary-dir=<%= @binary_dir %> \
+  --module-dir=<%= @module_dir %> \
+  --config-dir=<%= @config_dir %> \
+  --data-dir=<%= @data_dir %> \
+  --log-dir=<%= @log_dir %> \
+  --uid=<%= @user %>

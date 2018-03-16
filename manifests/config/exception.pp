@@ -10,7 +10,7 @@ define inspircd::config::exception (
   ::inspircd::internal::configblock { "inspircd exception ${name}":
     config_name => 'exception',
     config      => $config,
-    order       => '28'
+    order       => 28
   }
 
 }

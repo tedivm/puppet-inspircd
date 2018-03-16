@@ -27,7 +27,7 @@ define inspircd::config::oper (
     config_name => 'oper',
     config      => $config,
     section     => 'opers',
-    order       => '10'
+    order       => 10
   }
 
 }

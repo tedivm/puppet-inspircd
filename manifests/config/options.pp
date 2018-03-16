@@ -52,7 +52,7 @@ class inspircd::config::options (
   ::inspircd::internal::configblock { "inspircd ${name} ":
     config_name => 'options',
     config      => $config,
-    order       => '18'
+    order       => 18
   }
 
 }

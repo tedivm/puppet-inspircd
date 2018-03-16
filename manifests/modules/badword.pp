@@ -11,7 +11,7 @@ define inspircd::modules::badword (
     config_name => 'badword',
     config      => $config,
     section     => 'modules',
-    order       => '2'
+    order       => 2
   }
 
 }

@@ -7,7 +7,7 @@ define inspircd::config::badip (
       keyname => 'ipmask',
       content => $name,
       reason  => $reason,
-      order   => '24',
+      order   => 24,
   }
 
 }

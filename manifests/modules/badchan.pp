@@ -15,7 +15,7 @@ define inspircd::modules::badchan (
     config_name => 'badchan',
     config      => $config,
     section     => 'modules',
-    order       => '2'
+    order       => 2
   }
 
 }

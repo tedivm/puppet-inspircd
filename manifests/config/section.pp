@@ -23,7 +23,7 @@ define inspircd::config::section (
   concat::fragment { "inspircd ${name} config":
     target  => $config_file,
     content => template("inspircd/config/${name}.conf.erb"),
-    order   => '01'
+    order   => 1
   }
 
   # Add an include for this section in the main configuration.

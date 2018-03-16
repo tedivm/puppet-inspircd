@@ -11,7 +11,7 @@ class inspircd::config::channels (
   ::inspircd::internal::configblock { "inspircd ${name} ":
     config_name => 'channels',
     config      => $config,
-    order       => '12'
+    order       => 12
   }
 
 }

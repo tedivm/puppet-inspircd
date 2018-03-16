@@ -354,6 +354,7 @@ class inspircd (
   class { 'inspircd::service':
     prefix         => $prefix,
     service_ensure => $service_ensure,
+    user           => $user,
   }
 
 

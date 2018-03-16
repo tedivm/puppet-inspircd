@@ -3,6 +3,7 @@ class inspircd::config::ssl (
   $keyfile = $inspircd::params::ssl_keyfile,
   $dhfile = undef,
   $cafile = undef,
+  $crlfile = undef,
   $hash = $inspircd::params::ssl_hash,
   $generate = true,
   $module = $inspircd::params::ssl_module,

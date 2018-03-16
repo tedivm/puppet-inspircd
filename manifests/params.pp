@@ -23,12 +23,12 @@ class inspircd::params {
       ]
 
       $packages_gnutls = [
-        'libgnutls-dev',
+        'libgnutls28-dev',
         'gnutls-bin',
       ]
 
       $packages_openssl = [
-        'libssl1.0.0',
+        'libssl1.1',
         'libssl-dev',
         'openssl',
         'libcurl4-openssl-dev',

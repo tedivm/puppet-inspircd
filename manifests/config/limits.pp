@@ -26,7 +26,7 @@ class inspircd::config::limits (
   ::inspircd::internal::configblock { "inspircd ${name}":
     config_name => 'limits',
     config      => $config,
-    order       => '21'
+    order       => 21
   }
 
 

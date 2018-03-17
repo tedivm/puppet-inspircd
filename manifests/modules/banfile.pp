@@ -12,7 +12,7 @@ define inspircd::modules::banfile (
     config_name => 'banfile',
     config      => $config,
     section     => 'modules',
-    order       => '2'
+    order       => 2
   }
 
 }

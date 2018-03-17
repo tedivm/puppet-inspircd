@@ -51,7 +51,7 @@ define inspircd::modules::alias (
     config_name => 'alias',
     config      => $config,
     section     => 'modules',
-    order       => '12',
+    order       => 12,
   }
 
 }

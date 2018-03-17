@@ -23,12 +23,12 @@ class inspircd::params {
       ]
 
       $packages_gnutls = [
-        'libgnutls-dev',
+        'libgnutls28-dev',
         'gnutls-bin',
       ]
 
       $packages_openssl = [
-        'libssl1.0.0',
+        'libssl1.1',
         'libssl-dev',
         'openssl',
         'libcurl4-openssl-dev',
@@ -118,7 +118,7 @@ class inspircd::params {
   $rules = ''
 
   $commands = ''
-  $femodes = ''
+  $usermodes = ''
   $chanmodes = ''
   $fakenonexistant = 'yes'
 
@@ -152,7 +152,7 @@ class inspircd::params {
   $secret = "secret ${::domain}"
 
   $users = '20'
-  $oper = '60'
+  $opers = '60'
 
   $ipv4clone = '32'
   $ipv6clone = '128'

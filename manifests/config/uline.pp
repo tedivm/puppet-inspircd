@@ -12,7 +12,7 @@ define inspircd::config::uline (
     config_name => 'uline',
     config      => $config,
     section     => 'links',
-    order       => '2',
+    order       => 2,
   }
 
 }

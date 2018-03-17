@@ -34,7 +34,7 @@ define inspircd::config::link (
     config_name => 'link',
     config      => $config,
     section     => 'links',
-    order       => '1',
+    order       => 1,
   }
 
 }

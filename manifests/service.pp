@@ -1,6 +1,7 @@
 class inspircd::service (
   $prefix = $inspircd::params::prefix,
   $service_ensure = $inspircd::params::service_ensure,
+  $user = $inspircd::params::user,
 ) inherits inspircd::params {
 
 

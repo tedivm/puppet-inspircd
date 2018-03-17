@@ -4,6 +4,7 @@ class inspircd::modules::openssl (
   $dhfile = undef,
   $cafile = undef,
   $hash = 'sha1',
+  $crlfile = undef,
   $ciphers = undef,
   $customcontextoptions = undef,
   $cipherserverpref = undef,

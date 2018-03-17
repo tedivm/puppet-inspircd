@@ -14,7 +14,7 @@ class inspircd::config::whowas (
   ::inspircd::internal::configblock { "inspircd ${name}":
     config_name => 'whowas',
     config      => $config,
-    order       => '23'
+    order       => 23
   }
 
 

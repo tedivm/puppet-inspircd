@@ -315,7 +315,7 @@ class inspircd::config (
       cafile     => $cafile,
       hash       => $ssl_hash,
       generate   => $generate,
-      module     => $module,
+      module     => $ssl_module,
       extra_conf => $extra_conf,
       add_bind   => $add_bind,
       bind_port  => $bind_ssl_port,

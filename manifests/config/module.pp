@@ -8,16 +8,16 @@ define inspircd::config::module (
   }
 
   if(member(['gnutls', 'openssl'], $name)) {
-    $order = '02'
+    $order = 2
   }else{
-    $order = '08'
+    $order = 8
   }
 
   ::inspircd::internal::configblock { "inspircd module include ${name}":
     config_name => 'module',
     config      => $module_include,
     section     => 'modules',
-    order       => '02'
+    order       => 2
   }
 
   # If module configuration is available use it.

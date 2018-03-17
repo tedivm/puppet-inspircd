@@ -6,7 +6,7 @@ define inspircd::config::badnick (
       type    => 'nick',
       content => $name,
       reason  => $reason,
-      order   => '25',
+      order   => 25,
   }
 
 }

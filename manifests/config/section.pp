@@ -16,14 +16,11 @@ define inspircd::config::section (
     notify         => Service['inspircd'],
   }
 
-  # If any of the config files get changed restart inspircd
-  File[$config_file] ~> Service['inspircd']
-
   # Add the default template to the start of the config file.
   concat::fragment { "inspircd ${name} config":
     target  => $config_file,
     content => template("inspircd/config/${name}.conf.erb"),
-    order   => '01'
+    order   => 1
   }
 
   # Add an include for this section in the main configuration.

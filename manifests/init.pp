@@ -94,7 +94,7 @@ class inspircd (
 
   # CHANNELS
   $users = $inspircd::params::users,
-  $oper = $inspircd::params::oper,
+  $opers = $inspircd::params::opers,
 
 
   # CIDR
@@ -354,6 +354,7 @@ class inspircd (
   class { 'inspircd::service':
     prefix         => $prefix,
     service_ensure => $service_ensure,
+    user           => $user,
   }
 
 

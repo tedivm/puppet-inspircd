@@ -13,7 +13,7 @@ class inspircd::config::server (
   ::inspircd::internal::configblock { "inspircd ${name}":
     config_name => 'server',
     config      => $config,
-    order       => '05'
+    order       => 5
   }
 
 }

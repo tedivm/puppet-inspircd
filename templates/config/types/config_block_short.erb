@@ -1,1 +1,1 @@
-<<%= @config_name %><% @config.keys.sort.each do |key| -%><%- if config[key].to_s != 'undef' -%> <%= key %>="<%= config[key] %>"<%- end -%><% end -%>>
+<<%= @config_name %><% @config.keys.sort.each do |key| -%><%- if @config[key].to_s != 'undef' -%> <%= key %>="<%= @config[key] %>"<%- end -%><% end -%>>

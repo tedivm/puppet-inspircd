@@ -14,7 +14,7 @@
   "project_page": "https://github.com/tedivm/puppet-inspircd",
   "issues_url": "https://github.com/tedivm/puppet-inspircd/issues",
   "dependencies": [
-    {"name":"puppetlabs-concat","version_requirement":"< 2.0.0"}
+    {"name":"puppetlabs-concat","version_requirement":"<3.0.0 >1.0.0"}
   ],
   "operatingsystem_support": [
     { "operatingsystem": "Ubuntu", "operatingsystemrelease": ["14.04"]},
